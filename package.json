@@ -1,6 +1,7 @@
 {
   "name": "node-autoit-koffi",
   "version": "1.0.0",
+  "description": "This Node.js module provides support for all AutoIt functions, allowing users to automate Windows GUI tasks seamlessly.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -19,5 +20,23 @@
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
+  },
+  "keywords": [
+    "autoit",
+    "napi",
+    "nodejs",
+    "ffi",
+    "koffi"
+  ],
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/nullmastermind/node-autoit-koffi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nullmastermind/node-autoit-koffi.git"
+  },
+  "author": {
+    "name": "Van Dong",
+    "email": "thenullmastermind@gmail.com",
+    "url": "https://github.com/nullmastermind"
   }
 }
