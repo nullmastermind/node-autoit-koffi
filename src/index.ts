@@ -1,5 +1,3 @@
-export const greet = (name: string): string => {
-  return `Hello, ${name}!`;
-};
+import { getDll } from "./util";
 
-console.log(greet("Van Dong"));
+console.log(getDll());
