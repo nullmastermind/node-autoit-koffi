@@ -1,5 +1,6 @@
 import * as os from "os";
 import path from "node:path";
+import wchar from "./wchar";
 
 export const getDll = () => {
   const libDir = path.join(__dirname, "../dlls");
@@ -12,4 +13,11 @@ export const getDll = () => {
   }
 
   return null;
+};
+
+export const getWString = (buf: Buffer) => {
+  for (let i = 0; i < buf.length; i += wchar.size) {
+    if (buf[i] == 0 && buf[i + 1] == 0) return wchar.toString(buf.slice(0, i));
+  }
+  return wchar.toString(buf);
 };

@@ -9,8 +9,10 @@
     "start": "npm run build && node dist/index.js"
   },
   "dependencies": {
+    "iconv-lite": "^0.6.3",
     "koffi": "^2.8.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "ref-napi": "^3.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
