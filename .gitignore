@@ -9,3 +9,4 @@ npm-debug.log
 *.ipr
 out/
 dist
+examples/gen.ts

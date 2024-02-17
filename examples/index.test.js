@@ -1,5 +1,5 @@
 const test = require("node:test");
-const { init, mouseMove, send, clipGet } = require("../dist");
+const { init, mouseMove, send, clipGet, sleep } = require("../dist");
 
 test("mouse move", async () => {
   await init();
@@ -8,7 +8,7 @@ test("mouse move", async () => {
 
 test("send", async () => {
   await init();
-  await new Promise((rel) => setTimeout(rel, 3000));
+  await sleep(3000);
   await send("Good job", 1);
 });
 
