@@ -466,8 +466,21 @@ const saveContent = [
 
 forEach(autoitFunctions, (config, fnName) => {
   const key = lowercaseFirstLetter(fnName.replace("AU3_", ""));
+  const defaultArgKey = fnName.replace("AU3_", "");
   const result = JSON.stringify(config[0]);
-  const arguments = JSON.stringify(config[1]);
+  const arguments = JSON.stringify(
+    config[1].map((v, i) => {
+      if (argToReturnValue.hasOwnProperty(defaultArgKey)) {
+        const toReturn = argToReturnValue[defaultArgKey];
+        if (i === toReturn.arg) {
+          if (toReturn.type !== "wstring") {
+            v = `_Out_ ${v}*`;
+          }
+        }
+      }
+      return v;
+    }),
+  );
   const fn = `lib.func("${fnName}", ${result}, ${arguments})`.replace(
     /\n/g,
     "",
@@ -486,21 +499,23 @@ forEach(autoitFunctions, (config, fnName) => {
   let resultType = argTypes[config[0]];
   let resultHandleCode = "";
   let resultHandleType = "";
-  const pastArgs = [];
+  const passArgs = [];
   // generate arguments
   const gen_arguments = config[1]
     .map((argType, i) => {
-      const defaultArgKey = fnName.replace("AU3_", "");
-
       if (argToReturnValue.hasOwnProperty(defaultArgKey)) {
         const toReturn = argToReturnValue[defaultArgKey];
         if (i === toReturn.arg) {
-          console.log(toReturn.type, toReturn.type === "wstring");
           if (toReturn.type === "wstring") {
             resultType = "string";
             resultHandleCode = `let result = Buffer.alloc(arg${toReturn.ex_arg} * wchar.size);`;
             resultHandleType = "string";
-            pastArgs.push(`result`);
+            passArgs.push(`result`);
+          } else {
+            resultType = toReturn.type === "point" ? "Point" : "Rect";
+            resultHandleCode = `let result: any = {}`;
+            resultHandleType = "struct";
+            passArgs.push(`result`);
           }
         }
       }
@@ -522,7 +537,7 @@ forEach(autoitFunctions, (config, fnName) => {
         }
       }
 
-      pastArgs.push(`arg${i}`);
+      passArgs.push(`arg${i}`);
 
       return `arg${i}: ${argTypes[argType]}${defaultValue}`;
     })
@@ -547,7 +562,7 @@ export const ${key} = (${gen_arguments.join(", ")}): Promise<${resultType}> => {
   ${resultHandleCode}
   
   return new Promise((resolve, reject) => {
-    fn["${key}"].async(${pastArgs.length ? pastArgs.join(", ") + ", " : ""}(err: Error, ${resultHandleCode ? "_" : "res"}: any) => {
+    fn["${key}"].async(${passArgs.length ? passArgs.join(", ") + ", " : ""}(err: Error, ${resultHandleCode ? "_" : "res"}: any) => {
       if (err) reject(err);
       ${getResolve()}
     });

@@ -6,23 +6,33 @@ const dll = getDll();
 if (!dll) throw new Error("This operating system is not supported!");
 const lib = koffi.load(dll);
 
-const Rect = koffi.struct({
+export type Point = {
+  x: number;
+  y: number;
+};
+
+export type Rect = {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+};
+
+koffi.struct("LPRECT", {
   left: "long",
   top: "long",
   right: "long",
   bottom: "long",
 });
-const Point = koffi.struct({
+koffi.struct("LPPOINT", {
   x: "long",
   y: "long",
 });
-
 koffi.pointer("LPWSTR", "uint16_t*");
-koffi.pointer("LPRECT", Rect);
-koffi.pointer("LPPOINT", Point);
 
 const fn: Record<string, koffi.KoffiFunction> = {};
 
+// Generated code:
 export const init = (): Promise<void> => {
   if (!fn.hasOwnProperty("init")) {
     fn["init"] = lib.func("AU3_Init", "void", []);
@@ -542,41 +552,54 @@ export const controlGetPos = (
   arg0: string,
   arg1: string = "",
   arg2: string,
-): Promise<number> => {
+): Promise<Rect> => {
   if (!fn.hasOwnProperty("controlGetPos")) {
     fn["controlGetPos"] = lib.func("AU3_ControlGetPos", "int", [
       "string16",
       "string16",
       "string16",
-      "LPRECT",
+      "_Out_ LPRECT*",
     ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["controlGetPos"].async(arg0, arg1, arg2, (err: Error, res: any) => {
-      if (err) reject(err);
-      else resolve(res);
-    });
+    fn["controlGetPos"].async(
+      arg0,
+      arg1,
+      arg2,
+      result,
+      (err: Error, _: any) => {
+        if (err) reject(err);
+        else resolve(result);
+      },
+    );
   });
 };
 
 export const controlGetPosByHandle = (
   arg0: number,
   arg1: number,
-): Promise<number> => {
+): Promise<Rect> => {
   if (!fn.hasOwnProperty("controlGetPosByHandle")) {
     fn["controlGetPosByHandle"] = lib.func("AU3_ControlGetPosByHandle", "int", [
       "int",
       "int",
-      "LPRECT",
+      "_Out_ LPRECT*",
     ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["controlGetPosByHandle"].async(arg0, arg1, (err: Error, res: any) => {
-      if (err) reject(err);
-      else resolve(res);
-    });
+    fn["controlGetPosByHandle"].async(
+      arg0,
+      arg1,
+      result,
+      (err: Error, _: any) => {
+        if (err) reject(err);
+        else resolve(result);
+      },
+    );
   });
 };
 
@@ -1162,15 +1185,16 @@ export const mouseGetCursor = (): Promise<number> => {
   });
 };
 
-export const mouseGetPos = (): Promise<void> => {
+export const mouseGetPos = (): Promise<Point> => {
   if (!fn.hasOwnProperty("mouseGetPos")) {
-    fn["mouseGetPos"] = lib.func("AU3_MouseGetPos", "void", ["LPPOINT"]);
+    fn["mouseGetPos"] = lib.func("AU3_MouseGetPos", "void", ["_Out_ LPPOINT*"]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["mouseGetPos"].async((err: Error, res: any) => {
+    fn["mouseGetPos"].async(result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };
@@ -1264,21 +1288,22 @@ export const pixelSearch = (
   arg1: number,
   arg2: number = 0,
   arg3: number = 1,
-): Promise<void> => {
+): Promise<Point> => {
   if (!fn.hasOwnProperty("pixelSearch")) {
     fn["pixelSearch"] = lib.func("AU3_PixelSearch", "void", [
       "LPRECT",
       "int",
       "int",
       "int",
-      "LPPOINT",
+      "_Out_ LPPOINT*",
     ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["pixelSearch"].async(arg1, arg2, arg3, (err: Error, res: any) => {
+    fn["pixelSearch"].async(arg1, arg2, arg3, result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };
@@ -1711,15 +1736,18 @@ export const winExistsByHandle = (arg0: number): Promise<number> => {
   });
 };
 
-export const winGetCaretPos = (): Promise<number> => {
+export const winGetCaretPos = (): Promise<Point> => {
   if (!fn.hasOwnProperty("winGetCaretPos")) {
-    fn["winGetCaretPos"] = lib.func("AU3_WinGetCaretPos", "int", ["LPPOINT"]);
+    fn["winGetCaretPos"] = lib.func("AU3_WinGetCaretPos", "int", [
+      "_Out_ LPPOINT*",
+    ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["winGetCaretPos"].async((err: Error, res: any) => {
+    fn["winGetCaretPos"].async(result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };
@@ -1782,36 +1810,38 @@ export const winGetClassListByHandle = (
 export const winGetClientSize = (
   arg0: string,
   arg1: string = "",
-): Promise<number> => {
+): Promise<Rect> => {
   if (!fn.hasOwnProperty("winGetClientSize")) {
     fn["winGetClientSize"] = lib.func("AU3_WinGetClientSize", "int", [
       "string16",
       "string16",
-      "LPRECT",
+      "_Out_ LPRECT*",
     ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["winGetClientSize"].async(arg0, arg1, (err: Error, res: any) => {
+    fn["winGetClientSize"].async(arg0, arg1, result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };
 
-export const winGetClientSizeByHandle = (arg0: number): Promise<number> => {
+export const winGetClientSizeByHandle = (arg0: number): Promise<Rect> => {
   if (!fn.hasOwnProperty("winGetClientSizeByHandle")) {
     fn["winGetClientSizeByHandle"] = lib.func(
       "AU3_WinGetClientSizeByHandle",
       "int",
-      ["int", "LPRECT"],
+      ["int", "_Out_ LPRECT*"],
     );
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["winGetClientSizeByHandle"].async(arg0, (err: Error, res: any) => {
+    fn["winGetClientSizeByHandle"].async(arg0, result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };
@@ -1864,35 +1894,37 @@ export const winGetHandleAsText = (
   });
 };
 
-export const winGetPos = (arg0: string, arg1: string = ""): Promise<number> => {
+export const winGetPos = (arg0: string, arg1: string = ""): Promise<Rect> => {
   if (!fn.hasOwnProperty("winGetPos")) {
     fn["winGetPos"] = lib.func("AU3_WinGetPos", "int", [
       "string16",
       "string16",
-      "LPRECT",
+      "_Out_ LPRECT*",
     ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["winGetPos"].async(arg0, arg1, (err: Error, res: any) => {
+    fn["winGetPos"].async(arg0, arg1, result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };
 
-export const winGetPosByHandle = (arg0: number): Promise<number> => {
+export const winGetPosByHandle = (arg0: number): Promise<Rect> => {
   if (!fn.hasOwnProperty("winGetPosByHandle")) {
     fn["winGetPosByHandle"] = lib.func("AU3_WinGetPosByHandle", "int", [
       "int",
-      "LPRECT",
+      "_Out_ LPRECT*",
     ]);
   }
+  let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["winGetPosByHandle"].async(arg0, (err: Error, res: any) => {
+    fn["winGetPosByHandle"].async(arg0, result, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(res);
+      else resolve(result);
     });
   });
 };

@@ -1,7 +1,15 @@
 const test = require("node:test");
-const { init, mouseMove, send, clipGet, sleep } = require("../dist");
+const {
+  init,
+  mouseMove,
+  send,
+  clipGet,
+  sleep,
+  mouseGetPos,
+  winGetClientSize,
+} = require("../dist");
 
-test("mouse move", async () => {
+test("mouseMove", async () => {
   await init();
   await mouseMove(0, 0);
 });
@@ -15,4 +23,14 @@ test("send", async () => {
 test("clipGet", async () => {
   await init();
   console.log(await clipGet());
+});
+
+test("mouseGetPos", async () => {
+  await init();
+  console.log(await mouseGetPos());
+});
+
+test("winGetClientSize", async () => {
+  await init();
+  console.log(await winGetClientSize("Untitled - Notepad"));
 });
