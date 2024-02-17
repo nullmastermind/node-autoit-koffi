@@ -9,7 +9,8 @@
     "start": "npm run build && node dist/index.js"
   },
   "dependencies": {
-    "koffi": "^2.8.0"
+    "koffi": "^2.8.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
