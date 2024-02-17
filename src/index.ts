@@ -6,23 +6,20 @@ const dll = getDll();
 if (!dll) throw new Error("This operating system is not supported!");
 const lib = koffi.load(dll);
 
+const Rect = koffi.struct({
+  left: "long",
+  top: "long",
+  right: "long",
+  bottom: "long",
+});
+const Point = koffi.struct({
+  x: "long",
+  y: "long",
+});
+
 koffi.pointer("LPWSTR", "uint16_t*");
-koffi.pointer(
-  "LPRECT",
-  koffi.struct({
-    left: "long",
-    top: "long",
-    right: "long",
-    bottom: "long",
-  }),
-);
-koffi.pointer(
-  "LPPOINT",
-  koffi.struct({
-    x: "long",
-    y: "long",
-  }),
-);
+koffi.pointer("LPRECT", Rect);
+koffi.pointer("LPPOINT", Point);
 
 const fn: Record<string, koffi.KoffiFunction> = {};
 
