@@ -1,13 +1,11 @@
 // Ignore this script, everyone.
 
-const LPWSTR = "pointer";
-const LPRECT = "pointer";
-const LPPOINT = "pointer";
+const { forEach } = require("lodash");
 const autoitFunctions = {
   AU3_Init: ["void", []],
   AU3_error: ["int", []],
   AU3_AutoItSetOption: ["int", ["string16", "int"]],
-  AU3_ClipGet: ["void", [LPWSTR, "int"]],
+  AU3_ClipGet: ["void", ["LPWSTR", "int"]],
   AU3_ClipPut: ["void", ["string16"]],
   AU3_ControlClick: [
     "int",
@@ -19,11 +17,19 @@ const autoitFunctions = {
   ],
   AU3_ControlCommand: [
     "void",
-    ["string16", "string16", "string16", "string16", "string16", LPWSTR, "int"],
+    [
+      "string16",
+      "string16",
+      "string16",
+      "string16",
+      "string16",
+      "LPWSTR",
+      "int",
+    ],
   ],
   AU3_ControlCommandByHandle: [
     "void",
-    ["int", "int", "string16", "string16", LPWSTR, "int"],
+    ["int", "int", "string16", "string16", "LPWSTR", "int"],
   ],
   AU3_ControlListView: [
     "void",
@@ -34,13 +40,13 @@ const autoitFunctions = {
       "string16",
       "string16",
       "string16",
-      LPWSTR,
+      "LPWSTR",
       "int",
     ],
   ],
   AU3_ControlListViewByHandle: [
     "void",
-    ["int", "int", "string16", "string16", "string16", LPWSTR, "int"],
+    ["int", "int", "string16", "string16", "string16", "LPWSTR", "int"],
   ],
   AU3_ControlDisable: ["int", ["string16", "string16", "string16"]],
   AU3_ControlDisableByHandle: ["int", ["int", "int"]],
@@ -48,8 +54,8 @@ const autoitFunctions = {
   AU3_ControlEnableByHandle: ["int", ["int", "int"]],
   AU3_ControlFocus: ["int", ["string16", "string16", "string16"]],
   AU3_ControlFocusByHandle: ["int", ["int", "int"]],
-  AU3_ControlGetFocus: ["void", ["string16", "string16", LPWSTR, "int"]],
-  AU3_ControlGetFocusByHandle: ["void", ["int", LPWSTR, "int"]],
+  AU3_ControlGetFocus: ["void", ["string16", "string16", "LPWSTR", "int"]],
+  AU3_ControlGetFocusByHandle: ["void", ["int", "LPWSTR", "int"]],
   AU3_ControlGetHandle: ["int", ["int", "string16"]],
   AU3_ControlGetHandleAsText: [
     "void",
@@ -57,17 +63,17 @@ const autoitFunctions = {
       "string16",
       /*[in,defaultvalue("")]*/ "string16",
       "string16",
-      LPWSTR,
+      "LPWSTR",
       "int",
     ],
   ],
-  AU3_ControlGetPos: ["int", ["string16", "string16", "string16", LPRECT]],
-  AU3_ControlGetPosByHandle: ["int", ["int", "int", LPRECT]],
+  AU3_ControlGetPos: ["int", ["string16", "string16", "string16", "LPRECT"]],
+  AU3_ControlGetPosByHandle: ["int", ["int", "int", "LPRECT"]],
   AU3_ControlGetText: [
     "void",
-    ["string16", "string16", "string16", LPWSTR, "int"],
+    ["string16", "string16", "string16", "LPWSTR", "int"],
   ],
-  AU3_ControlGetTextByHandle: ["void", ["int", "int", LPWSTR, "int"]],
+  AU3_ControlGetTextByHandle: ["void", ["int", "int", "LPWSTR", "int"]],
   AU3_ControlHide: ["int", ["string16", "string16", "string16"]],
   AU3_ControlHideByHandle: ["int", ["int", "int"]],
   AU3_ControlMove: [
@@ -93,13 +99,13 @@ const autoitFunctions = {
       "string16",
       "string16",
       "string16",
-      LPWSTR,
+      "LPWSTR",
       "int",
     ],
   ],
   AU3_ControlTreeViewByHandle: [
     "void",
-    ["int", "int", "string16", "string16", "string16", LPWSTR, "int"],
+    ["int", "int", "string16", "string16", "string16", "LPWSTR", "int"],
   ],
   AU3_DriveMapAdd: [
     "void",
@@ -109,12 +115,12 @@ const autoitFunctions = {
       "int",
       /*[in,defaultvalue("")]*/ "string16",
       /*[in,defaultvalue("")]*/ "string16",
-      LPWSTR,
+      "LPWSTR",
       "int",
     ],
   ],
   AU3_DriveMapDel: ["int", ["string16"]],
-  AU3_DriveMapGet: ["void", ["string16", LPWSTR, "int"]],
+  AU3_DriveMapGet: ["void", ["string16", "LPWSTR", "int"]],
   AU3_IsAdmin: ["int", []],
   AU3_MouseClick: [
     "int",
@@ -123,16 +129,16 @@ const autoitFunctions = {
   AU3_MouseClickDrag: ["int", ["string16", "int", "int", "int", "int", "int"]],
   AU3_MouseDown: ["void", [/*[in,defaultvalue("LEFT")]*/ "string16"]],
   AU3_MouseGetCursor: ["int", []],
-  AU3_MouseGetPos: ["void", [LPPOINT]],
+  AU3_MouseGetPos: ["void", ["LPPOINT"]],
   AU3_MouseMove: ["int", ["int", "int", "int"]],
   AU3_MouseUp: ["void", [/*[in,defaultvalue("LEFT")]*/ "string16"]],
   AU3_MouseWheel: ["void", ["string16", "int"]],
   AU3_Opt: ["int", ["string16", "int"]],
-  AU3_PixelChecksum: ["uint", [LPRECT, "int"]],
+  AU3_PixelChecksum: ["uint", ["LPRECT", "int"]],
   AU3_PixelGetColor: ["int", ["int", "int"]],
   AU3_PixelSearch: [
     "void",
-    [LPRECT, "int", /*default 0*/ "int", /*default 1*/ "int", LPPOINT],
+    ["LPRECT", "int", /*default 0*/ "int", /*default 1*/ "int", "LPPOINT"],
   ],
   AU3_ProcessClose: ["int", ["string16"]],
   AU3_ProcessExists: ["int", ["string16"]],
@@ -177,13 +183,13 @@ const autoitFunctions = {
       "string16",
       /*[in,defaultvalue("")]*/ "string16",
       /*[in,defaultvalue(1)]*/ "int",
-      LPWSTR,
+      "LPWSTR",
       "int",
     ],
   ],
   AU3_StatusbarGetTextByHandle: [
     "int",
-    ["int", /*[in,defaultvalue(1)]*/ "int", LPWSTR, "int"],
+    ["int", /*[in,defaultvalue(1)]*/ "int", "LPWSTR", "int"],
   ],
   AU3_ToolTip: ["void", ["string16", "int", "int"]],
   AU3_WinActivate: ["int", ["string16", "string16"]],
@@ -194,27 +200,27 @@ const autoitFunctions = {
   AU3_WinCloseByHandle: ["int", ["int"]],
   AU3_WinExists: ["int", ["string16", /*[in,defaultvalue("")]*/ "string16"]],
   AU3_WinExistsByHandle: ["int", ["int"]],
-  AU3_WinGetCaretPos: ["int", [LPPOINT]],
+  AU3_WinGetCaretPos: ["int", ["LPPOINT"]],
   AU3_WinGetClassList: [
     "void",
-    ["string16", /*[in,defaultvalue("")]*/ "string16", LPWSTR, "int"],
+    ["string16", /*[in,defaultvalue("")]*/ "string16", "LPWSTR", "int"],
   ],
-  AU3_WinGetClassListByHandle: ["void", ["int", LPWSTR, "int"]],
+  AU3_WinGetClassListByHandle: ["void", ["int", "LPWSTR", "int"]],
   AU3_WinGetClientSize: [
     "int",
-    ["string16", /*[in,defaultvalue("")]*/ "string16", LPRECT],
+    ["string16", /*[in,defaultvalue("")]*/ "string16", "LPRECT"],
   ],
-  AU3_WinGetClientSizeByHandle: ["int", ["int", LPRECT]],
+  AU3_WinGetClientSizeByHandle: ["int", ["int", "LPRECT"]],
   AU3_WinGetHandle: ["int", ["string16", /*[in,defaultvalue("")]*/ "string16"]],
   AU3_WinGetHandleAsText: [
     "void",
-    ["string16", /*[in,defaultvalue("")]*/ "string16", LPWSTR, "int"],
+    ["string16", /*[in,defaultvalue("")]*/ "string16", "LPWSTR", "int"],
   ],
   AU3_WinGetPos: [
     "int",
-    ["string16", /*[in,defaultvalue("")]*/ "string16", LPRECT],
+    ["string16", /*[in,defaultvalue("")]*/ "string16", "LPRECT"],
   ],
-  AU3_WinGetPosByHandle: ["int", ["int", LPRECT]],
+  AU3_WinGetPosByHandle: ["int", ["int", "LPRECT"]],
   AU3_WinGetProcess: [
     "uint32",
     ["string16", /*[in,defaultvalue("")]*/ "string16"],
@@ -224,14 +230,14 @@ const autoitFunctions = {
   AU3_WinGetStateByHandle: ["int", ["int"]],
   AU3_WinGetText: [
     "void",
-    ["string16", /*[in,defaultvalue("")]*/ "string16", LPWSTR, "int"],
+    ["string16", /*[in,defaultvalue("")]*/ "string16", "LPWSTR", "int"],
   ],
-  AU3_WinGetTextByHandle: ["void", ["int", LPWSTR, "int"]],
+  AU3_WinGetTextByHandle: ["void", ["int", "LPWSTR", "int"]],
   AU3_WinGetTitle: [
     "void",
-    ["string16", /*[in,defaultvalue("")]*/ "string16", LPWSTR, "int"],
+    ["string16", /*[in,defaultvalue("")]*/ "string16", "LPWSTR", "int"],
   ],
-  AU3_WinGetTitleByHandle: ["void", ["int", LPWSTR, "int"]],
+  AU3_WinGetTitleByHandle: ["void", ["int", "LPWSTR", "int"]],
   AU3_WinKill: ["int", ["string16", /*[in,defaultvalue("")]*/ "string16"]],
   AU3_WinKillByHandle: ["int", ["int"]],
   AU3_WinMenuSelectItem: [
@@ -315,3 +321,20 @@ const autoitFunctions = {
   ],
   AU3_WinWaitNotActiveByHandle: ["int", ["int", "int"]],
 };
+
+function lowercaseFirstLetter(str) {
+  return str.charAt(0).toLowerCase() + str.slice(1);
+}
+
+forEach(autoitFunctions, (config, fnName) => {
+  const key = lowercaseFirstLetter(fnName.replace("AU3_", ""));
+  const result = JSON.stringify(config[0]);
+  const arguments = JSON.stringify(config[1]);
+
+  console.log(
+    `${key}: lib.func("${fnName}", ${result}, ${arguments}),`.replace(
+      /\n/g,
+      "",
+    ),
+  );
+});
