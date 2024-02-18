@@ -2,6 +2,9 @@
 
 const { forEach } = require("lodash");
 const fs = require("fs");
+
+const argumentNames = require("./argumentNames.json");
+
 const autoitFunctions = {
   AU3_Init: ["void", []],
   AU3_error: ["int", []],
@@ -502,6 +505,13 @@ forEach(autoitFunctions, (config, fnName) => {
   let resultHandleCode = "";
   let resultHandleType = "";
   const passArgs = [];
+  const getArgName = (key) => {
+    if (argumentNames.hasOwnProperty(fnName)) {
+      const kv = argumentNames[fnName];
+      if (kv[key]) return kv[key];
+    }
+    return key;
+  };
   // generate arguments
   const gen_arguments = config[1]
     .map((argType, i) => {
@@ -512,7 +522,7 @@ forEach(autoitFunctions, (config, fnName) => {
         if (i === toReturn.arg) {
           if (toReturn.type === "wstring") {
             resultType = "string";
-            resultHandleCode = `let result = Buffer.alloc(arg${toReturn.ex_arg} * wchar.size);`;
+            resultHandleCode = `let result = Buffer.alloc(${getArgName(`arg${toReturn.ex_arg}`)} * wchar.size);`;
             resultHandleType = "string";
             passArgs.push(`result`);
           } else {
@@ -527,8 +537,8 @@ forEach(autoitFunctions, (config, fnName) => {
 
       if (["LPWSTR", "LPRECT", "LPPOINT"].includes(argType)) {
         if (!isReturnType) {
-          passArgs.push(`arg${i}`);
-          return `arg${i}: ${argTypes[argType]}`;
+          passArgs.push(`${getArgName(`arg${i}`)}`);
+          return `${getArgName(`arg${i}`)}: ${argTypes[argType]}`;
         }
         return;
       }
@@ -549,9 +559,9 @@ forEach(autoitFunctions, (config, fnName) => {
         }
       }
 
-      passArgs.push(`arg${i}`);
+      passArgs.push(`${getArgName(`arg${i}`)}`);
 
-      return `arg${i}: ${argTypes[argType]}${defaultValue}`;
+      return `${getArgName(`arg${i}`)}: ${argTypes[argType]}${defaultValue}`;
     })
     .filter((v) => !!v);
 
