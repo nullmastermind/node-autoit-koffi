@@ -1,0 +1,583 @@
+{
+  "AU3_AutoItSetOption": {
+    "arg0": "szOption",
+    "arg1": "nValue"
+  },
+  "AU3_ClipGet": {
+    "arg0": "szClip",
+    "arg1": "nBufSize"
+  },
+  "AU3_ClipPut": {
+    "arg0": "szClip"
+  },
+  "AU3_ControlClick": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szButton",
+    "arg4": "nNumClicks",
+    "arg5": "nX",
+    "arg6": "nY"
+  },
+  "AU3_ControlClickByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szButton",
+    "arg3": "nNumClicks",
+    "arg4": "nX",
+    "arg5": "nY"
+  },
+  "AU3_ControlCommand": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szCommand",
+    "arg4": "szExtra",
+    "arg5": "szResult",
+    "arg6": "nBufSize"
+  },
+  "AU3_ControlCommandByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szCommand",
+    "arg3": "szExtra",
+    "arg4": "szResult",
+    "arg5": "nBufSize"
+  },
+  "AU3_ControlListView": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szCommand",
+    "arg4": "szExtra1",
+    "arg5": "szExtra2",
+    "arg6": "szResult",
+    "arg7": "nBufSize"
+  },
+  "AU3_ControlListViewByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szCommand",
+    "arg3": "szExtra1",
+    "arg4": "szExtra2",
+    "arg5": "szResult",
+    "arg6": "nBufSize"
+  },
+  "AU3_ControlDisable": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl"
+  },
+  "AU3_ControlDisableByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl"
+  },
+  "AU3_ControlEnable": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl"
+  },
+  "AU3_ControlEnableByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl"
+  },
+  "AU3_ControlFocus": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl"
+  },
+  "AU3_ControlFocusByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl"
+  },
+  "AU3_ControlGetFocus": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControlWithFocus",
+    "arg3": "nBufSize"
+  },
+  "AU3_ControlGetFocusByHandle": {
+    "arg0": "hWnd",
+    "arg1": "szControlWithFocus",
+    "arg2": "nBufSize"
+  },
+  "AU3_ControlGetHandle": {
+    "arg0": "hWnd",
+    "arg1": "szControl"
+  },
+  "AU3_ControlGetHandleAsText": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szRetText",
+    "arg4": "nBufSize"
+  },
+  "AU3_ControlGetPos": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "lpRect"
+  },
+  "AU3_ControlGetPosByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "lpRect"
+  },
+  "AU3_ControlGetText": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szControlText",
+    "arg4": "nBufSize"
+  },
+  "AU3_ControlGetTextByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szControlText",
+    "arg3": "nBufSize"
+  },
+  "AU3_ControlHide": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl"
+  },
+  "AU3_ControlHideByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl"
+  },
+  "AU3_ControlMove": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "nX",
+    "arg4": "nY",
+    "arg5": "nWidth",
+    "arg6": "nHeight"
+  },
+  "AU3_ControlMoveByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "nX",
+    "arg3": "nY",
+    "arg4": "nWidth",
+    "arg5": "nHeight"
+  },
+  "AU3_ControlSend": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szSendText",
+    "arg4": "nMode"
+  },
+  "AU3_ControlSendByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szSendText",
+    "arg3": "nMode"
+  },
+  "AU3_ControlSetText": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szControlText"
+  },
+  "AU3_ControlSetTextByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szControlText"
+  },
+  "AU3_ControlShow": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl"
+  },
+  "AU3_ControlShowByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl"
+  },
+  "AU3_ControlTreeView": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szControl",
+    "arg3": "szCommand",
+    "arg4": "szExtra1",
+    "arg5": "szExtra2",
+    "arg6": "szResult",
+    "arg7": "nBufSize"
+  },
+  "AU3_ControlTreeViewByHandle": {
+    "arg0": "hWnd",
+    "arg1": "hCtrl",
+    "arg2": "szCommand",
+    "arg3": "szExtra1",
+    "arg4": "szExtra2",
+    "arg5": "szResult",
+    "arg6": "nBufSize"
+  },
+  "AU3_DriveMapAdd": {
+    "arg0": "szDevice",
+    "arg1": "szShare",
+    "arg2": "nFlags",
+    "arg3": "szUser",
+    "arg4": "szPwd",
+    "arg5": "szResult",
+    "arg6": "nBufSize"
+  },
+  "AU3_DriveMapDel": {
+    "arg0": "szDevice"
+  },
+  "AU3_DriveMapGet": {
+    "arg0": "szDevice",
+    "arg1": "szMapping",
+    "arg2": "nBufSize"
+  },
+  "AU3_MouseClick": {
+    "arg0": "szButton",
+    "arg1": "nX",
+    "arg2": "nY",
+    "arg3": "nClicks",
+    "arg4": "nSpeed"
+  },
+  "AU3_MouseClickDrag": {
+    "arg0": "szButton",
+    "arg1": "nX1",
+    "arg2": "nY1",
+    "arg3": "nX2",
+    "arg4": "nY2",
+    "arg5": "nSpeed"
+  },
+  "AU3_MouseDown": {
+    "arg0": "szButton"
+  },
+  "AU3_MouseGetPos": {
+    "arg0": "lpPoint"
+  },
+  "AU3_MouseMove": {
+    "arg0": "nX",
+    "arg1": "nY",
+    "arg2": "nSpeed"
+  },
+  "AU3_MouseUp": {
+    "arg0": "szButton"
+  },
+  "AU3_MouseWheel": {
+    "arg0": "szDirection",
+    "arg1": "nClicks"
+  },
+  "AU3_Opt": {
+    "arg0": "szOption",
+    "arg1": "nValue"
+  },
+  "AU3_PixelChecksum": {
+    "arg0": "lpRect",
+    "arg1": "nStep"
+  },
+  "AU3_PixelGetColor": {
+    "arg0": "nX",
+    "arg1": "nY"
+  },
+  "AU3_PixelSearch": {
+    "arg0": "lpRect",
+    "arg1": "nCol",
+    "arg2": "nVar",
+    "arg3": "nStep",
+    "arg4": "pPointResult"
+  },
+  "AU3_ProcessClose": {
+    "arg0": "szProcess"
+  },
+  "AU3_ProcessExists": {
+    "arg0": "szProcess"
+  },
+  "AU3_ProcessSetPriority": {
+    "arg0": "szProcess",
+    "arg1": "nPriority"
+  },
+  "AU3_ProcessWait": {
+    "arg0": "szProcess",
+    "arg1": "nTimeout"
+  },
+  "AU3_ProcessWaitClose": {
+    "arg0": "szProcess",
+    "arg1": "nTimeout"
+  },
+  "AU3_Run": {
+    "arg0": "szProgram",
+    "arg1": "szDir",
+    "arg2": "nShowFlag"
+  },
+  "AU3_RunWait": {
+    "arg0": "szProgram",
+    "arg1": "szDir",
+    "arg2": "nShowFlag"
+  },
+  "AU3_RunAs": {
+    "arg0": "szUser",
+    "arg1": "szDomain",
+    "arg2": "szPassword",
+    "arg3": "nLogonFlag",
+    "arg4": "szProgram",
+    "arg5": "szDir",
+    "arg6": "nShowFlag"
+  },
+  "AU3_RunAsWait": {
+    "arg0": "szUser",
+    "arg1": "szDomain",
+    "arg2": "szPassword",
+    "arg3": "nLogonFlag",
+    "arg4": "szProgram",
+    "arg5": "szDir",
+    "arg6": "nShowFlag"
+  },
+  "AU3_Send": {
+    "arg0": "szSendText",
+    "arg1": "nMode"
+  },
+  "AU3_Shutdown": {
+    "arg0": "nFlags"
+  },
+  "AU3_Sleep": {
+    "arg0": "nMilliseconds"
+  },
+  "AU3_StatusbarGetText": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nPart",
+    "arg3": "szStatusText",
+    "arg4": "nBufSize"
+  },
+  "AU3_StatusbarGetTextByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nPart",
+    "arg2": "szStatusText",
+    "arg3": "nBufSize"
+  },
+  "AU3_ToolTip": {
+    "arg0": "szTip",
+    "arg1": "nX",
+    "arg2": "nY"
+  },
+  "AU3_WinActivate": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinActivateByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinActive": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinActiveByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinClose": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinCloseByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinExists": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinExistsByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinGetCaretPos": {
+    "arg0": "lpPoint"
+  },
+  "AU3_WinGetClassList": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szRetText",
+    "arg3": "nBufSize"
+  },
+  "AU3_WinGetClassListByHandle": {
+    "arg0": "hWnd",
+    "arg1": "szRetText",
+    "arg2": "nBufSize"
+  },
+  "AU3_WinGetClientSize": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "lpRect"
+  },
+  "AU3_WinGetClientSizeByHandle": {
+    "arg0": "hWnd",
+    "arg1": "lpRect"
+  },
+  "AU3_WinGetHandle": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinGetHandleAsText": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szRetText",
+    "arg3": "nBufSize"
+  },
+  "AU3_WinGetPos": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "lpRect"
+  },
+  "AU3_WinGetPosByHandle": {
+    "arg0": "hWnd",
+    "arg1": "lpRect"
+  },
+  "AU3_WinGetProcess": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinGetProcessByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinGetState": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinGetStateByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinGetText": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szRetText",
+    "arg3": "nBufSize"
+  },
+  "AU3_WinGetTextByHandle": {
+    "arg0": "hWnd",
+    "arg1": "szRetText",
+    "arg2": "nBufSize"
+  },
+  "AU3_WinGetTitle": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szRetText",
+    "arg3": "nBufSize"
+  },
+  "AU3_WinGetTitleByHandle": {
+    "arg0": "hWnd",
+    "arg1": "szRetText",
+    "arg2": "nBufSize"
+  },
+  "AU3_WinKill": {
+    "arg0": "szTitle",
+    "arg1": "szText"
+  },
+  "AU3_WinKillByHandle": {
+    "arg0": "hWnd"
+  },
+  "AU3_WinMenuSelectItem": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szItem1",
+    "arg3": "szItem2",
+    "arg4": "szItem3",
+    "arg5": "szItem4",
+    "arg6": "szItem5",
+    "arg7": "szItem6",
+    "arg8": "szItem7",
+    "arg9": "szItem8"
+  },
+  "AU3_WinMenuSelectItemByHandle": {
+    "arg0": "hWnd",
+    "arg1": "szItem1",
+    "arg2": "szItem2",
+    "arg3": "szItem3",
+    "arg4": "szItem4",
+    "arg5": "szItem5",
+    "arg6": "szItem6",
+    "arg7": "szItem7",
+    "arg8": "szItem8"
+  },
+  "AU3_WinMove": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nX",
+    "arg3": "nY",
+    "arg4": "nWidth",
+    "arg5": "nHeight"
+  },
+  "AU3_WinMoveByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nX",
+    "arg2": "nY",
+    "arg3": "nWidth",
+    "arg4": "nHeight"
+  },
+  "AU3_WinSetOnTop": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nFlag"
+  },
+  "AU3_WinSetOnTopByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nFlag"
+  },
+  "AU3_WinSetState": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nFlags"
+  },
+  "AU3_WinSetStateByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nFlags"
+  },
+  "AU3_WinSetTitle": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "szNewTitle"
+  },
+  "AU3_WinSetTitleByHandle": {
+    "arg0": "hWnd",
+    "arg1": "szNewTitle"
+  },
+  "AU3_WinSetTrans": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nTrans"
+  },
+  "AU3_WinSetTransByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nTrans"
+  },
+  "AU3_WinWait": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nTimeout"
+  },
+  "AU3_WinWaitByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nTimeout"
+  },
+  "AU3_WinWaitActive": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nTimeout"
+  },
+  "AU3_WinWaitActiveByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nTimeout"
+  },
+  "AU3_WinWaitClose": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nTimeout"
+  },
+  "AU3_WinWaitCloseByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nTimeout"
+  },
+  "AU3_WinWaitNotActive": {
+    "arg0": "szTitle",
+    "arg1": "szText",
+    "arg2": "nTimeout"
+  },
+  "AU3_WinWaitNotActiveByHandle": {
+    "arg0": "hWnd",
+    "arg1": "nTimeout"
+  }
+}
