@@ -1,6 +1,6 @@
 {
   "name": "node-autoit-koffi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This Node.js module provides support for all AutoIt functions, allowing users to automate Windows GUI tasks seamlessly.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

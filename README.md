@@ -21,7 +21,7 @@ const autoit = require("node-autoit-koffi");
 async function main() {
   await autoit.init();
   // Your code here
-  await mouseMove(0, 0);
+  await autoit.mouseMove(0, 0);
 }
 
 main().catch(console.error);
