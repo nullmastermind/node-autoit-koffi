@@ -491,6 +491,8 @@ forEach(autoitFunctions, (config, fnName) => {
     void: "void",
     uint: "number",
     uint32: "number",
+    LPRECT: "Rect",
+    LPPOINT: "Point",
   };
   // result
   if (!argTypes.hasOwnProperty(config[0])) {
@@ -503,6 +505,8 @@ forEach(autoitFunctions, (config, fnName) => {
   // generate arguments
   const gen_arguments = config[1]
     .map((argType, i) => {
+      let isReturnType = false;
+
       if (argToReturnValue.hasOwnProperty(defaultArgKey)) {
         const toReturn = argToReturnValue[defaultArgKey];
         if (i === toReturn.arg) {
@@ -517,10 +521,18 @@ forEach(autoitFunctions, (config, fnName) => {
             resultHandleType = "struct";
             passArgs.push(`result`);
           }
+          isReturnType = true;
         }
       }
 
-      if (["LPWSTR", "LPRECT", "LPPOINT"].includes(argType)) return;
+      if (["LPWSTR", "LPRECT", "LPPOINT"].includes(argType)) {
+        if (!isReturnType) {
+          passArgs.push(`arg${i}`);
+          return `arg${i}: ${argTypes[argType]}`;
+        }
+        return;
+      }
+
       if (!argTypes.hasOwnProperty(argType)) {
         throw { message: `type '${argType}' not found` };
       }

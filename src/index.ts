@@ -1255,7 +1255,10 @@ export const opt = (arg0: string, arg1: number): Promise<number> => {
   });
 };
 
-export const pixelChecksum = (arg1: number = 1): Promise<number> => {
+export const pixelChecksum = (
+  arg0: Rect,
+  arg1: number = 1,
+): Promise<number> => {
   if (!fn.hasOwnProperty("pixelChecksum")) {
     fn["pixelChecksum"] = lib.func("AU3_PixelChecksum", "uint", [
       "LPRECT",
@@ -1264,7 +1267,7 @@ export const pixelChecksum = (arg1: number = 1): Promise<number> => {
   }
 
   return new Promise((resolve, reject) => {
-    fn["pixelChecksum"].async(arg1, (err: Error, res: any) => {
+    fn["pixelChecksum"].async(arg0, arg1, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1285,6 +1288,7 @@ export const pixelGetColor = (arg0: number, arg1: number): Promise<number> => {
 };
 
 export const pixelSearch = (
+  arg0: Rect,
   arg1: number,
   arg2: number = 0,
   arg3: number = 1,
@@ -1301,10 +1305,17 @@ export const pixelSearch = (
   let result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn["pixelSearch"].async(arg1, arg2, arg3, result, (err: Error, _: any) => {
-      if (err) reject(err);
-      else resolve(result);
-    });
+    fn["pixelSearch"].async(
+      arg0,
+      arg1,
+      arg2,
+      arg3,
+      result,
+      (err: Error, _: any) => {
+        if (err) reject(err);
+        else resolve(result);
+      },
+    );
   });
 };
 
