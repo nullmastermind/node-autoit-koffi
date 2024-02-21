@@ -87,7 +87,15 @@ export const clipGet = (nBufSize: number = 512): Promise<string> => {
   return new Promise((resolve, reject) => {
     fn["clipGet"].async(result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
-      else resolve(getWString(result));
+      else {
+        const content = getWString(result);
+
+        if (content.length === nBufSize - 1) {
+          resolve(clipGet(nBufSize * 2));
+        } else {
+          resolve(content);
+        }
+      }
     });
   });
 };

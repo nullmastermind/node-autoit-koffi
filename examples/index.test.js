@@ -22,7 +22,10 @@ test("send", async () => {
 
 test("clipGet", async () => {
   await init();
-  console.log(await clipGet());
+  const clipContent = await clipGet();
+
+  console.log("length: ", clipContent.length);
+  console.log("content: ", clipContent);
 });
 
 test("mouseGetPos", async () => {
