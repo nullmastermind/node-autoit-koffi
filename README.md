@@ -24,7 +24,7 @@ async function main() {
   await autoit.mouseMove(0, 0);
 }
 
-main().catch(console.error);
+void main();
 ```
 
 Make sure to refer to the [AutoIt documentation](https://www.autoitscript.com/autoit3/docs/functions/) for a list of supported functions and their usage.
