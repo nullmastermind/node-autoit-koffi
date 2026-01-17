@@ -1,5 +1,5 @@
 /*
-This code is from ref-wchar by nathan
+This code is based on ref-wchar by Nathan Rajlich
 
 License
 (The MIT License)
@@ -13,95 +13,36 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/**
- * Module dependencies.
- */
-
-var ref = require('ref-napi');
-//var Iconv = require('iconv').Iconv;
 var iconv = require('iconv-lite');
 
 /**
  * On Windows they're UTF-16 (2-bytes),
  * but on Unix platform they're UTF-32 (4-bytes).
- *
- * TODO: add a way to optionally enable `-fshort-wchar` for Unix (gcc option).
  */
-
-var size;
-if ('win32' === process.platform) {
-  size = 2;
-} else {
-  size = 4;
-}
-
-var wchar_encoding = (`utf-${8 * size}${ref.endianness}`).toLowerCase();
-//var getter = new Iconv('UTF-' + (8 * size) + ref.endianness, 'UTF-8');
-//var setter = new Iconv('UTF-8', 'UTF-' + (8 * size) + ref.endianness);
+var size = process.platform === 'win32' ? 2 : 4;
 
 /**
- * The `wchar_t` type.
+ * Detect system endianness using TypedArray
  */
-
-module.exports = Object.create(ref.types[`int${8 * size}`]);
-module.exports.name = 'wchar_t';
-module.exports.size = size;
-module.exports.indirection = 1;
-module.exports.get = function get(buf, offset) {
-  if (offset > 0 || buf.length !== module.exports.size) {
-    offset = offset | 0;
-    buf = buf.slice(offset, offset + size);
-  }
-  return module.exports.toString(buf);
-};
-module.exports.set = function set(buf, offset, val) {
-  var _buf = val; // assume val is a Buffer by default
-  if (typeof val === 'string') {
-    //_buf = setter.convert(val[0]);
-    _buf = iconv.encode(val[0], wchar_encoding);
-  } else if (typeof val === 'number') {
-    //_buf = setter.convert(String.fromCharCode(val));
-    _buf = iconv.encode(String.fromCharCode(val), wchar_encoding);
-  } else if (!_buf) {
-    throw new TypeError('muss pass a String, Number, or Buffer for `wchar_t`');
-  }
-  return _buf.copy(buf, offset, 0, size);
-};
+var endianness = (new Uint16Array(new Uint8Array([0x12, 0x34]).buffer))[0] === 0x3412 ? 'le' : 'be';
 
 /**
- * The "wchar_t *" type.
- *
- * We use the "CString" type as a base since it's pretty close to what we
- * actually want. We just have to define custom "get" and "set" functions.
+ * Encoding string for iconv-lite (e.g., 'utf-16le' or 'utf-32le')
  */
-
-module.exports.string = Object.create(ref.types.CString);
-module.exports.string.name = 'WCString';
-module.exports.string.get = function get(buf, offset) {
-  var _buf = buf.readPointer(offset);
-  if (_buf.isNull()) {
-    return null;
-  }
-  var stringBuf = _buf.reinterpretUntilZeros(module.exports.size);
-  return module.exports.toString(stringBuf);
-};
-module.exports.string.set = function set(buf, offset, val) {
-  var _buf = val; // val is a Buffer? it better be \0 terminated...
-  if ('string' === typeof val) {
-    //_buf = setter.convert(val + '\0');
-    _buf = iconv.encode(`${val}\0`, wchar_encoding);
-  }
-  return buf.writePointer(_buf, offset);
-};
+var wchar_encoding = `utf-${8 * size}${endianness}`;
 
 /**
  * Turns a `wchar_t *` Buffer instance into a JavaScript String instance.
  *
  * @param {Buffer} buffer - buffer instance to serialize
+ * @returns {string} - decoded string
  * @public
  */
-
-module.exports.toString = function bufferToString(buffer) {
-  //return getter.convert(buffer).toString('utf8');
+function wcharToString(buffer) {
   return iconv.decode(buffer, wchar_encoding);
+}
+
+module.exports = {
+  size: size,
+  toString: wcharToString
 };

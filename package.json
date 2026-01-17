@@ -16,8 +16,7 @@
   "dependencies": {
     "iconv-lite": "^0.6.3",
     "koffi": "^2.8.0",
-    "lodash": "^4.17.21",
-    "ref-napi": "^3.0.3"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
