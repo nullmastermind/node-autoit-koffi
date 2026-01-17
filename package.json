@@ -11,7 +11,9 @@
     "lint": "biome lint",
     "lint:fix": "biome lint --write",
     "format": "biome format --write",
-    "check": "biome check --write"
+    "check": "biome check --write",
+    "prepublishOnly": "bun run build",
+    "publish:patch": "npm version patch --no-git-tag-version && npm publish --access public"
   },
   "dependencies": {
     "iconv-lite": "^0.6.3",
