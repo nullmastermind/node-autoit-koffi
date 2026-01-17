@@ -35,27 +35,26 @@ if ('win32' == process.platform) {
   size = 4;
 }
 
-var wchar_encoding = ('utf-' + (8*size) + ref.endianness).toLowerCase();
+var wchar_encoding = ('utf-' + 8 * size + ref.endianness).toLowerCase();
 //var getter = new Iconv('UTF-' + (8 * size) + ref.endianness, 'UTF-8');
 //var setter = new Iconv('UTF-8', 'UTF-' + (8 * size) + ref.endianness);
-
 
 /**
  * The `wchar_t` type.
  */
 
-exports = module.exports = Object.create(ref.types['int' + (8 * size)]);
+exports = module.exports = Object.create(ref.types['int' + 8 * size]);
 exports.name = 'wchar_t';
 exports.size = size;
 exports.indirection = 1;
-exports.get = function get (buf, offset) {
+exports.get = function get(buf, offset) {
   if (offset > 0 || buf.length !== exports.size) {
     offset = offset | 0;
     buf = buf.slice(offset, offset + size);
   }
   return exports.toString(buf);
 };
-exports.set = function set (buf, offset, val) {
+exports.set = function set(buf, offset, val) {
   var _buf = val; // assume val is a Buffer by default
   if (typeof val === 'string') {
     //_buf = setter.convert(val[0]);
@@ -69,7 +68,6 @@ exports.set = function set (buf, offset, val) {
   return _buf.copy(buf, offset, 0, size);
 };
 
-
 /**
  * The "wchar_t *" type.
  *
@@ -79,7 +77,7 @@ exports.set = function set (buf, offset, val) {
 
 exports.string = Object.create(ref.types.CString);
 exports.string.name = 'WCString';
-exports.string.get = function get (buf, offset) {
+exports.string.get = function get(buf, offset) {
   var _buf = buf.readPointer(offset);
   if (_buf.isNull()) {
     return null;
@@ -87,7 +85,7 @@ exports.string.get = function get (buf, offset) {
   var stringBuf = _buf.reinterpretUntilZeros(exports.size);
   return exports.toString(stringBuf);
 };
-exports.string.set = function set (buf, offset, val) {
+exports.string.set = function set(buf, offset, val) {
   var _buf = val; // val is a Buffer? it better be \0 terminated...
   if ('string' == typeof val) {
     //_buf = setter.convert(val + '\0');
@@ -103,7 +101,7 @@ exports.string.set = function set (buf, offset, val) {
  * @public
  */
 
-exports.toString = function toString (buffer) {
+exports.toString = function toString(buffer) {
   //return getter.convert(buffer).toString('utf8');
   return iconv.decode(buffer, wchar_encoding);
 };
