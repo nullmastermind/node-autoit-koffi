@@ -35,11 +35,11 @@ const fn: Record<string, koffi.KoffiFunction> = {};
 // Generated code:
 export const init = (): Promise<void> => {
   if (!Object.hasOwn(fn, 'init')) {
-    fn['init'] = lib.func('AU3_Init', 'void', []);
+    fn.init = lib.func('AU3_Init', 'void', []);
   }
 
   return new Promise((resolve, reject) => {
-    fn['init'].async((err: Error, res: any) => {
+    fn.init.async((err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -48,11 +48,11 @@ export const init = (): Promise<void> => {
 
 export const error = (): Promise<number> => {
   if (!Object.hasOwn(fn, 'error')) {
-    fn['error'] = lib.func('AU3_error', 'int', []);
+    fn.error = lib.func('AU3_error', 'int', []);
   }
 
   return new Promise((resolve, reject) => {
-    fn['error'].async((err: Error, res: any) => {
+    fn.error.async((err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -61,11 +61,11 @@ export const error = (): Promise<number> => {
 
 export const autoItSetOption = (szOption: string, nValue: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'autoItSetOption')) {
-    fn['autoItSetOption'] = lib.func('AU3_AutoItSetOption', 'int', ['string16', 'int']);
+    fn.autoItSetOption = lib.func('AU3_AutoItSetOption', 'int', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['autoItSetOption'].async(szOption, nValue, (err: Error, res: any) => {
+    fn.autoItSetOption.async(szOption, nValue, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -74,12 +74,12 @@ export const autoItSetOption = (szOption: string, nValue: number): Promise<numbe
 
 export const clipGet = (nBufSize: number = 512): Promise<string> => {
   if (!Object.hasOwn(fn, 'clipGet')) {
-    fn['clipGet'] = lib.func('AU3_ClipGet', 'void', ['LPWSTR', 'int']);
+    fn.clipGet = lib.func('AU3_ClipGet', 'void', ['LPWSTR', 'int']);
   }
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['clipGet'].async(result, nBufSize, (err: Error, _: any) => {
+    fn.clipGet.async(result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else {
         const content = getWString(result);
@@ -96,11 +96,11 @@ export const clipGet = (nBufSize: number = 512): Promise<string> => {
 
 export const clipPut = (szClip: string): Promise<void> => {
   if (!Object.hasOwn(fn, 'clipPut')) {
-    fn['clipPut'] = lib.func('AU3_ClipPut', 'void', ['string16']);
+    fn.clipPut = lib.func('AU3_ClipPut', 'void', ['string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['clipPut'].async(szClip, (err: Error, res: any) => {
+    fn.clipPut.async(szClip, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -117,7 +117,7 @@ export const controlClick = (
   nY: number = -2147483647,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlClick')) {
-    fn['controlClick'] = lib.func('AU3_ControlClick', 'int', [
+    fn.controlClick = lib.func('AU3_ControlClick', 'int', [
       'string16',
       'string16',
       'string16',
@@ -129,7 +129,7 @@ export const controlClick = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlClick'].async(
+    fn.controlClick.async(
       szTitle,
       szText,
       szControl,
@@ -154,7 +154,7 @@ export const controlClickByHandle = (
   nY: number = -2147483647,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlClickByHandle')) {
-    fn['controlClickByHandle'] = lib.func('AU3_ControlClickByHandle', 'int', [
+    fn.controlClickByHandle = lib.func('AU3_ControlClickByHandle', 'int', [
       'int',
       'int',
       'string16',
@@ -165,7 +165,7 @@ export const controlClickByHandle = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlClickByHandle'].async(
+    fn.controlClickByHandle.async(
       hWnd,
       hCtrl,
       szButton,
@@ -189,7 +189,7 @@ export const controlCommand = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlCommand')) {
-    fn['controlCommand'] = lib.func('AU3_ControlCommand', 'void', [
+    fn.controlCommand = lib.func('AU3_ControlCommand', 'void', [
       'string16',
       'string16',
       'string16',
@@ -202,7 +202,7 @@ export const controlCommand = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlCommand'].async(
+    fn.controlCommand.async(
       szTitle,
       szText,
       szControl,
@@ -226,7 +226,7 @@ export const controlCommandByHandle = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlCommandByHandle')) {
-    fn['controlCommandByHandle'] = lib.func('AU3_ControlCommandByHandle', 'void', [
+    fn.controlCommandByHandle = lib.func('AU3_ControlCommandByHandle', 'void', [
       'int',
       'int',
       'string16',
@@ -238,7 +238,7 @@ export const controlCommandByHandle = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlCommandByHandle'].async(
+    fn.controlCommandByHandle.async(
       hWnd,
       hCtrl,
       szCommand,
@@ -263,7 +263,7 @@ export const controlListView = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlListView')) {
-    fn['controlListView'] = lib.func('AU3_ControlListView', 'void', [
+    fn.controlListView = lib.func('AU3_ControlListView', 'void', [
       'string16',
       'string16',
       'string16',
@@ -277,7 +277,7 @@ export const controlListView = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlListView'].async(
+    fn.controlListView.async(
       szTitle,
       szText,
       szControl,
@@ -303,7 +303,7 @@ export const controlListViewByHandle = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlListViewByHandle')) {
-    fn['controlListViewByHandle'] = lib.func('AU3_ControlListViewByHandle', 'void', [
+    fn.controlListViewByHandle = lib.func('AU3_ControlListViewByHandle', 'void', [
       'int',
       'int',
       'string16',
@@ -316,7 +316,7 @@ export const controlListViewByHandle = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlListViewByHandle'].async(
+    fn.controlListViewByHandle.async(
       hWnd,
       hCtrl,
       szCommand,
@@ -338,7 +338,7 @@ export const controlDisable = (
   szControl: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlDisable')) {
-    fn['controlDisable'] = lib.func('AU3_ControlDisable', 'int', [
+    fn.controlDisable = lib.func('AU3_ControlDisable', 'int', [
       'string16',
       'string16',
       'string16',
@@ -346,7 +346,7 @@ export const controlDisable = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlDisable'].async(szTitle, szText, szControl, (err: Error, res: any) => {
+    fn.controlDisable.async(szTitle, szText, szControl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -355,11 +355,11 @@ export const controlDisable = (
 
 export const controlDisableByHandle = (hWnd: number, hCtrl: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlDisableByHandle')) {
-    fn['controlDisableByHandle'] = lib.func('AU3_ControlDisableByHandle', 'int', ['int', 'int']);
+    fn.controlDisableByHandle = lib.func('AU3_ControlDisableByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlDisableByHandle'].async(hWnd, hCtrl, (err: Error, res: any) => {
+    fn.controlDisableByHandle.async(hWnd, hCtrl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -372,7 +372,7 @@ export const controlEnable = (
   szControl: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlEnable')) {
-    fn['controlEnable'] = lib.func('AU3_ControlEnable', 'int', [
+    fn.controlEnable = lib.func('AU3_ControlEnable', 'int', [
       'string16',
       'string16',
       'string16',
@@ -380,7 +380,7 @@ export const controlEnable = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlEnable'].async(szTitle, szText, szControl, (err: Error, res: any) => {
+    fn.controlEnable.async(szTitle, szText, szControl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -389,11 +389,11 @@ export const controlEnable = (
 
 export const controlEnableByHandle = (hWnd: number, hCtrl: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlEnableByHandle')) {
-    fn['controlEnableByHandle'] = lib.func('AU3_ControlEnableByHandle', 'int', ['int', 'int']);
+    fn.controlEnableByHandle = lib.func('AU3_ControlEnableByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlEnableByHandle'].async(hWnd, hCtrl, (err: Error, res: any) => {
+    fn.controlEnableByHandle.async(hWnd, hCtrl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -406,11 +406,11 @@ export const controlFocus = (
   szControl: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlFocus')) {
-    fn['controlFocus'] = lib.func('AU3_ControlFocus', 'int', ['string16', 'string16', 'string16']);
+    fn.controlFocus = lib.func('AU3_ControlFocus', 'int', ['string16', 'string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlFocus'].async(szTitle, szText, szControl, (err: Error, res: any) => {
+    fn.controlFocus.async(szTitle, szText, szControl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -419,11 +419,11 @@ export const controlFocus = (
 
 export const controlFocusByHandle = (hWnd: number, hCtrl: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlFocusByHandle')) {
-    fn['controlFocusByHandle'] = lib.func('AU3_ControlFocusByHandle', 'int', ['int', 'int']);
+    fn.controlFocusByHandle = lib.func('AU3_ControlFocusByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlFocusByHandle'].async(hWnd, hCtrl, (err: Error, res: any) => {
+    fn.controlFocusByHandle.async(hWnd, hCtrl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -436,7 +436,7 @@ export const controlGetFocus = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlGetFocus')) {
-    fn['controlGetFocus'] = lib.func('AU3_ControlGetFocus', 'void', [
+    fn.controlGetFocus = lib.func('AU3_ControlGetFocus', 'void', [
       'string16',
       'string16',
       'LPWSTR',
@@ -446,7 +446,7 @@ export const controlGetFocus = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlGetFocus'].async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
+    fn.controlGetFocus.async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -455,7 +455,7 @@ export const controlGetFocus = (
 
 export const controlGetFocusByHandle = (hWnd: number, nBufSize: number = 256): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlGetFocusByHandle')) {
-    fn['controlGetFocusByHandle'] = lib.func('AU3_ControlGetFocusByHandle', 'void', [
+    fn.controlGetFocusByHandle = lib.func('AU3_ControlGetFocusByHandle', 'void', [
       'int',
       'LPWSTR',
       'int',
@@ -464,7 +464,7 @@ export const controlGetFocusByHandle = (hWnd: number, nBufSize: number = 256): P
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlGetFocusByHandle'].async(hWnd, result, nBufSize, (err: Error, _: any) => {
+    fn.controlGetFocusByHandle.async(hWnd, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -473,11 +473,11 @@ export const controlGetFocusByHandle = (hWnd: number, nBufSize: number = 256): P
 
 export const controlGetHandle = (hWnd: number, szControl: string): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlGetHandle')) {
-    fn['controlGetHandle'] = lib.func('AU3_ControlGetHandle', 'int', ['int', 'string16']);
+    fn.controlGetHandle = lib.func('AU3_ControlGetHandle', 'int', ['int', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlGetHandle'].async(hWnd, szControl, (err: Error, res: any) => {
+    fn.controlGetHandle.async(hWnd, szControl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -491,7 +491,7 @@ export const controlGetHandleAsText = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlGetHandleAsText')) {
-    fn['controlGetHandleAsText'] = lib.func('AU3_ControlGetHandleAsText', 'void', [
+    fn.controlGetHandleAsText = lib.func('AU3_ControlGetHandleAsText', 'void', [
       'string16',
       'string16',
       'string16',
@@ -502,7 +502,7 @@ export const controlGetHandleAsText = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlGetHandleAsText'].async(
+    fn.controlGetHandleAsText.async(
       szTitle,
       szText,
       szControl,
@@ -522,7 +522,7 @@ export const controlGetPos = (
   szControl: string,
 ): Promise<Rect> => {
   if (!Object.hasOwn(fn, 'controlGetPos')) {
-    fn['controlGetPos'] = lib.func('AU3_ControlGetPos', 'int', [
+    fn.controlGetPos = lib.func('AU3_ControlGetPos', 'int', [
       'string16',
       'string16',
       'string16',
@@ -532,7 +532,7 @@ export const controlGetPos = (
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['controlGetPos'].async(szTitle, szText, szControl, result, (err: Error, _: any) => {
+    fn.controlGetPos.async(szTitle, szText, szControl, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -541,7 +541,7 @@ export const controlGetPos = (
 
 export const controlGetPosByHandle = (hWnd: number, hCtrl: number): Promise<Rect> => {
   if (!Object.hasOwn(fn, 'controlGetPosByHandle')) {
-    fn['controlGetPosByHandle'] = lib.func('AU3_ControlGetPosByHandle', 'int', [
+    fn.controlGetPosByHandle = lib.func('AU3_ControlGetPosByHandle', 'int', [
       'int',
       'int',
       '_Out_ LPRECT*',
@@ -550,7 +550,7 @@ export const controlGetPosByHandle = (hWnd: number, hCtrl: number): Promise<Rect
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['controlGetPosByHandle'].async(hWnd, hCtrl, result, (err: Error, _: any) => {
+    fn.controlGetPosByHandle.async(hWnd, hCtrl, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -564,7 +564,7 @@ export const controlGetText = (
   nBufSize: number = 512,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlGetText')) {
-    fn['controlGetText'] = lib.func('AU3_ControlGetText', 'void', [
+    fn.controlGetText = lib.func('AU3_ControlGetText', 'void', [
       'string16',
       'string16',
       'string16',
@@ -575,7 +575,7 @@ export const controlGetText = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlGetText'].async(
+    fn.controlGetText.async(
       szTitle,
       szText,
       szControl,
@@ -595,7 +595,7 @@ export const controlGetTextByHandle = (
   nBufSize: number = 512,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlGetTextByHandle')) {
-    fn['controlGetTextByHandle'] = lib.func('AU3_ControlGetTextByHandle', 'void', [
+    fn.controlGetTextByHandle = lib.func('AU3_ControlGetTextByHandle', 'void', [
       'int',
       'int',
       'LPWSTR',
@@ -605,7 +605,7 @@ export const controlGetTextByHandle = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlGetTextByHandle'].async(hWnd, hCtrl, result, nBufSize, (err: Error, _: any) => {
+    fn.controlGetTextByHandle.async(hWnd, hCtrl, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -618,11 +618,11 @@ export const controlHide = (
   szControl: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlHide')) {
-    fn['controlHide'] = lib.func('AU3_ControlHide', 'int', ['string16', 'string16', 'string16']);
+    fn.controlHide = lib.func('AU3_ControlHide', 'int', ['string16', 'string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlHide'].async(szTitle, szText, szControl, (err: Error, res: any) => {
+    fn.controlHide.async(szTitle, szText, szControl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -631,11 +631,11 @@ export const controlHide = (
 
 export const controlHideByHandle = (hWnd: number, hCtrl: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlHideByHandle')) {
-    fn['controlHideByHandle'] = lib.func('AU3_ControlHideByHandle', 'int', ['int', 'int']);
+    fn.controlHideByHandle = lib.func('AU3_ControlHideByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlHideByHandle'].async(hWnd, hCtrl, (err: Error, res: any) => {
+    fn.controlHideByHandle.async(hWnd, hCtrl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -652,7 +652,7 @@ export const controlMove = (
   nHeight: number = -1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlMove')) {
-    fn['controlMove'] = lib.func('AU3_ControlMove', 'int', [
+    fn.controlMove = lib.func('AU3_ControlMove', 'int', [
       'string16',
       'string16',
       'string16',
@@ -664,7 +664,7 @@ export const controlMove = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlMove'].async(
+    fn.controlMove.async(
       szTitle,
       szText,
       szControl,
@@ -689,7 +689,7 @@ export const controlMoveByHandle = (
   nHeight: number = -1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlMoveByHandle')) {
-    fn['controlMoveByHandle'] = lib.func('AU3_ControlMoveByHandle', 'int', [
+    fn.controlMoveByHandle = lib.func('AU3_ControlMoveByHandle', 'int', [
       'int',
       'int',
       'int',
@@ -700,7 +700,7 @@ export const controlMoveByHandle = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlMoveByHandle'].async(
+    fn.controlMoveByHandle.async(
       hWnd,
       hCtrl,
       nX,
@@ -723,7 +723,7 @@ export const controlSend = (
   nMode: number = 0,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlSend')) {
-    fn['controlSend'] = lib.func('AU3_ControlSend', 'int', [
+    fn.controlSend = lib.func('AU3_ControlSend', 'int', [
       'string16',
       'string16',
       'string16',
@@ -733,7 +733,7 @@ export const controlSend = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlSend'].async(
+    fn.controlSend.async(
       szTitle,
       szText,
       szControl,
@@ -754,7 +754,7 @@ export const controlSendByHandle = (
   nMode: number = 0,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlSendByHandle')) {
-    fn['controlSendByHandle'] = lib.func('AU3_ControlSendByHandle', 'int', [
+    fn.controlSendByHandle = lib.func('AU3_ControlSendByHandle', 'int', [
       'int',
       'int',
       'string16',
@@ -763,7 +763,7 @@ export const controlSendByHandle = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlSendByHandle'].async(hWnd, hCtrl, szSendText, nMode, (err: Error, res: any) => {
+    fn.controlSendByHandle.async(hWnd, hCtrl, szSendText, nMode, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -777,7 +777,7 @@ export const controlSetText = (
   szControlText: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlSetText')) {
-    fn['controlSetText'] = lib.func('AU3_ControlSetText', 'int', [
+    fn.controlSetText = lib.func('AU3_ControlSetText', 'int', [
       'string16',
       'string16',
       'string16',
@@ -786,7 +786,7 @@ export const controlSetText = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlSetText'].async(
+    fn.controlSetText.async(
       szTitle,
       szText,
       szControl,
@@ -805,7 +805,7 @@ export const controlSetTextByHandle = (
   szControlText: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlSetTextByHandle')) {
-    fn['controlSetTextByHandle'] = lib.func('AU3_ControlSetTextByHandle', 'int', [
+    fn.controlSetTextByHandle = lib.func('AU3_ControlSetTextByHandle', 'int', [
       'int',
       'int',
       'string16',
@@ -813,7 +813,7 @@ export const controlSetTextByHandle = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlSetTextByHandle'].async(hWnd, hCtrl, szControlText, (err: Error, res: any) => {
+    fn.controlSetTextByHandle.async(hWnd, hCtrl, szControlText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -826,11 +826,11 @@ export const controlShow = (
   szControl: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlShow')) {
-    fn['controlShow'] = lib.func('AU3_ControlShow', 'int', ['string16', 'string16', 'string16']);
+    fn.controlShow = lib.func('AU3_ControlShow', 'int', ['string16', 'string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlShow'].async(szTitle, szText, szControl, (err: Error, res: any) => {
+    fn.controlShow.async(szTitle, szText, szControl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -839,11 +839,11 @@ export const controlShow = (
 
 export const controlShowByHandle = (hWnd: number, hCtrl: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'controlShowByHandle')) {
-    fn['controlShowByHandle'] = lib.func('AU3_ControlShowByHandle', 'int', ['int', 'int']);
+    fn.controlShowByHandle = lib.func('AU3_ControlShowByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['controlShowByHandle'].async(hWnd, hCtrl, (err: Error, res: any) => {
+    fn.controlShowByHandle.async(hWnd, hCtrl, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -860,7 +860,7 @@ export const controlTreeView = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlTreeView')) {
-    fn['controlTreeView'] = lib.func('AU3_ControlTreeView', 'void', [
+    fn.controlTreeView = lib.func('AU3_ControlTreeView', 'void', [
       'string16',
       'string16',
       'string16',
@@ -874,7 +874,7 @@ export const controlTreeView = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlTreeView'].async(
+    fn.controlTreeView.async(
       szTitle,
       szText,
       szControl,
@@ -900,7 +900,7 @@ export const controlTreeViewByHandle = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'controlTreeViewByHandle')) {
-    fn['controlTreeViewByHandle'] = lib.func('AU3_ControlTreeViewByHandle', 'void', [
+    fn.controlTreeViewByHandle = lib.func('AU3_ControlTreeViewByHandle', 'void', [
       'int',
       'int',
       'string16',
@@ -913,7 +913,7 @@ export const controlTreeViewByHandle = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['controlTreeViewByHandle'].async(
+    fn.controlTreeViewByHandle.async(
       hWnd,
       hCtrl,
       szCommand,
@@ -938,7 +938,7 @@ export const driveMapAdd = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'driveMapAdd')) {
-    fn['driveMapAdd'] = lib.func('AU3_DriveMapAdd', 'void', [
+    fn.driveMapAdd = lib.func('AU3_DriveMapAdd', 'void', [
       'string16',
       'string16',
       'int',
@@ -951,7 +951,7 @@ export const driveMapAdd = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['driveMapAdd'].async(
+    fn.driveMapAdd.async(
       szDevice,
       szShare,
       nFlags,
@@ -969,11 +969,11 @@ export const driveMapAdd = (
 
 export const driveMapDel = (szDevice: string): Promise<number> => {
   if (!Object.hasOwn(fn, 'driveMapDel')) {
-    fn['driveMapDel'] = lib.func('AU3_DriveMapDel', 'int', ['string16']);
+    fn.driveMapDel = lib.func('AU3_DriveMapDel', 'int', ['string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['driveMapDel'].async(szDevice, (err: Error, res: any) => {
+    fn.driveMapDel.async(szDevice, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -982,12 +982,12 @@ export const driveMapDel = (szDevice: string): Promise<number> => {
 
 export const driveMapGet = (szDevice: string, nBufSize: number = 256): Promise<string> => {
   if (!Object.hasOwn(fn, 'driveMapGet')) {
-    fn['driveMapGet'] = lib.func('AU3_DriveMapGet', 'void', ['string16', 'LPWSTR', 'int']);
+    fn.driveMapGet = lib.func('AU3_DriveMapGet', 'void', ['string16', 'LPWSTR', 'int']);
   }
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['driveMapGet'].async(szDevice, result, nBufSize, (err: Error, _: any) => {
+    fn.driveMapGet.async(szDevice, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -996,11 +996,11 @@ export const driveMapGet = (szDevice: string, nBufSize: number = 256): Promise<s
 
 export const isAdmin = (): Promise<number> => {
   if (!Object.hasOwn(fn, 'isAdmin')) {
-    fn['isAdmin'] = lib.func('AU3_IsAdmin', 'int', []);
+    fn.isAdmin = lib.func('AU3_IsAdmin', 'int', []);
   }
 
   return new Promise((resolve, reject) => {
-    fn['isAdmin'].async((err: Error, res: any) => {
+    fn.isAdmin.async((err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1015,11 +1015,11 @@ export const mouseClick = (
   nSpeed: number = -1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'mouseClick')) {
-    fn['mouseClick'] = lib.func('AU3_MouseClick', 'int', ['string16', 'int', 'int', 'int', 'int']);
+    fn.mouseClick = lib.func('AU3_MouseClick', 'int', ['string16', 'int', 'int', 'int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseClick'].async(szButton, nX, nY, nClicks, nSpeed, (err: Error, res: any) => {
+    fn.mouseClick.async(szButton, nX, nY, nClicks, nSpeed, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1035,7 +1035,7 @@ export const mouseClickDrag = (
   nSpeed: number = -1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'mouseClickDrag')) {
-    fn['mouseClickDrag'] = lib.func('AU3_MouseClickDrag', 'int', [
+    fn.mouseClickDrag = lib.func('AU3_MouseClickDrag', 'int', [
       'string16',
       'int',
       'int',
@@ -1046,7 +1046,7 @@ export const mouseClickDrag = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseClickDrag'].async(szButton, nX1, nY1, nX2, nY2, nSpeed, (err: Error, res: any) => {
+    fn.mouseClickDrag.async(szButton, nX1, nY1, nX2, nY2, nSpeed, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1055,11 +1055,11 @@ export const mouseClickDrag = (
 
 export const mouseDown = (szButton: string = 'LEFT'): Promise<void> => {
   if (!Object.hasOwn(fn, 'mouseDown')) {
-    fn['mouseDown'] = lib.func('AU3_MouseDown', 'void', ['string16']);
+    fn.mouseDown = lib.func('AU3_MouseDown', 'void', ['string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseDown'].async(szButton, (err: Error, res: any) => {
+    fn.mouseDown.async(szButton, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1068,11 +1068,11 @@ export const mouseDown = (szButton: string = 'LEFT'): Promise<void> => {
 
 export const mouseGetCursor = (): Promise<number> => {
   if (!Object.hasOwn(fn, 'mouseGetCursor')) {
-    fn['mouseGetCursor'] = lib.func('AU3_MouseGetCursor', 'int', []);
+    fn.mouseGetCursor = lib.func('AU3_MouseGetCursor', 'int', []);
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseGetCursor'].async((err: Error, res: any) => {
+    fn.mouseGetCursor.async((err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1081,12 +1081,12 @@ export const mouseGetCursor = (): Promise<number> => {
 
 export const mouseGetPos = (): Promise<Point> => {
   if (!Object.hasOwn(fn, 'mouseGetPos')) {
-    fn['mouseGetPos'] = lib.func('AU3_MouseGetPos', 'void', ['_Out_ LPPOINT*']);
+    fn.mouseGetPos = lib.func('AU3_MouseGetPos', 'void', ['_Out_ LPPOINT*']);
   }
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['mouseGetPos'].async(result, (err: Error, _: any) => {
+    fn.mouseGetPos.async(result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1095,11 +1095,11 @@ export const mouseGetPos = (): Promise<Point> => {
 
 export const mouseMove = (nX: number, nY: number, nSpeed: number = -1): Promise<number> => {
   if (!Object.hasOwn(fn, 'mouseMove')) {
-    fn['mouseMove'] = lib.func('AU3_MouseMove', 'int', ['int', 'int', 'int']);
+    fn.mouseMove = lib.func('AU3_MouseMove', 'int', ['int', 'int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseMove'].async(nX, nY, nSpeed, (err: Error, res: any) => {
+    fn.mouseMove.async(nX, nY, nSpeed, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1108,11 +1108,11 @@ export const mouseMove = (nX: number, nY: number, nSpeed: number = -1): Promise<
 
 export const mouseUp = (szButton: string = 'LEFT'): Promise<void> => {
   if (!Object.hasOwn(fn, 'mouseUp')) {
-    fn['mouseUp'] = lib.func('AU3_MouseUp', 'void', ['string16']);
+    fn.mouseUp = lib.func('AU3_MouseUp', 'void', ['string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseUp'].async(szButton, (err: Error, res: any) => {
+    fn.mouseUp.async(szButton, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1121,11 +1121,11 @@ export const mouseUp = (szButton: string = 'LEFT'): Promise<void> => {
 
 export const mouseWheel = (szDirection: string, nClicks: number): Promise<void> => {
   if (!Object.hasOwn(fn, 'mouseWheel')) {
-    fn['mouseWheel'] = lib.func('AU3_MouseWheel', 'void', ['string16', 'int']);
+    fn.mouseWheel = lib.func('AU3_MouseWheel', 'void', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['mouseWheel'].async(szDirection, nClicks, (err: Error, res: any) => {
+    fn.mouseWheel.async(szDirection, nClicks, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1134,11 +1134,11 @@ export const mouseWheel = (szDirection: string, nClicks: number): Promise<void> 
 
 export const opt = (szOption: string, nValue: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'opt')) {
-    fn['opt'] = lib.func('AU3_Opt', 'int', ['string16', 'int']);
+    fn.opt = lib.func('AU3_Opt', 'int', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['opt'].async(szOption, nValue, (err: Error, res: any) => {
+    fn.opt.async(szOption, nValue, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1147,11 +1147,11 @@ export const opt = (szOption: string, nValue: number): Promise<number> => {
 
 export const pixelChecksum = (lpRect: Rect, nStep: number = 1): Promise<number> => {
   if (!Object.hasOwn(fn, 'pixelChecksum')) {
-    fn['pixelChecksum'] = lib.func('AU3_PixelChecksum', 'uint', ['LPRECT', 'int']);
+    fn.pixelChecksum = lib.func('AU3_PixelChecksum', 'uint', ['LPRECT', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['pixelChecksum'].async(lpRect, nStep, (err: Error, res: any) => {
+    fn.pixelChecksum.async(lpRect, nStep, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1160,11 +1160,11 @@ export const pixelChecksum = (lpRect: Rect, nStep: number = 1): Promise<number> 
 
 export const pixelGetColor = (nX: number, nY: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'pixelGetColor')) {
-    fn['pixelGetColor'] = lib.func('AU3_PixelGetColor', 'int', ['int', 'int']);
+    fn.pixelGetColor = lib.func('AU3_PixelGetColor', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['pixelGetColor'].async(nX, nY, (err: Error, res: any) => {
+    fn.pixelGetColor.async(nX, nY, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1178,7 +1178,7 @@ export const pixelSearch = (
   nStep: number = 1,
 ): Promise<Point> => {
   if (!Object.hasOwn(fn, 'pixelSearch')) {
-    fn['pixelSearch'] = lib.func('AU3_PixelSearch', 'void', [
+    fn.pixelSearch = lib.func('AU3_PixelSearch', 'void', [
       'LPRECT',
       'int',
       'int',
@@ -1189,7 +1189,7 @@ export const pixelSearch = (
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['pixelSearch'].async(lpRect, nCol, nVar, nStep, result, (err: Error, _: any) => {
+    fn.pixelSearch.async(lpRect, nCol, nVar, nStep, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1198,11 +1198,11 @@ export const pixelSearch = (
 
 export const processClose = (szProcess: string): Promise<number> => {
   if (!Object.hasOwn(fn, 'processClose')) {
-    fn['processClose'] = lib.func('AU3_ProcessClose', 'int', ['string16']);
+    fn.processClose = lib.func('AU3_ProcessClose', 'int', ['string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['processClose'].async(szProcess, (err: Error, res: any) => {
+    fn.processClose.async(szProcess, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1211,11 +1211,11 @@ export const processClose = (szProcess: string): Promise<number> => {
 
 export const processExists = (szProcess: string): Promise<number> => {
   if (!Object.hasOwn(fn, 'processExists')) {
-    fn['processExists'] = lib.func('AU3_ProcessExists', 'int', ['string16']);
+    fn.processExists = lib.func('AU3_ProcessExists', 'int', ['string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['processExists'].async(szProcess, (err: Error, res: any) => {
+    fn.processExists.async(szProcess, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1224,11 +1224,11 @@ export const processExists = (szProcess: string): Promise<number> => {
 
 export const processSetPriority = (szProcess: string, nPriority: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'processSetPriority')) {
-    fn['processSetPriority'] = lib.func('AU3_ProcessSetPriority', 'int', ['string16', 'int']);
+    fn.processSetPriority = lib.func('AU3_ProcessSetPriority', 'int', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['processSetPriority'].async(szProcess, nPriority, (err: Error, res: any) => {
+    fn.processSetPriority.async(szProcess, nPriority, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1237,11 +1237,11 @@ export const processSetPriority = (szProcess: string, nPriority: number): Promis
 
 export const processWait = (szProcess: string, nTimeout: number = 0): Promise<number> => {
   if (!Object.hasOwn(fn, 'processWait')) {
-    fn['processWait'] = lib.func('AU3_ProcessWait', 'int', ['string16', 'int']);
+    fn.processWait = lib.func('AU3_ProcessWait', 'int', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['processWait'].async(szProcess, nTimeout, (err: Error, res: any) => {
+    fn.processWait.async(szProcess, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1250,11 +1250,11 @@ export const processWait = (szProcess: string, nTimeout: number = 0): Promise<nu
 
 export const processWaitClose = (szProcess: string, nTimeout: number = 0): Promise<number> => {
   if (!Object.hasOwn(fn, 'processWaitClose')) {
-    fn['processWaitClose'] = lib.func('AU3_ProcessWaitClose', 'int', ['string16', 'int']);
+    fn.processWaitClose = lib.func('AU3_ProcessWaitClose', 'int', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['processWaitClose'].async(szProcess, nTimeout, (err: Error, res: any) => {
+    fn.processWaitClose.async(szProcess, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1267,11 +1267,11 @@ export const run = (
   nShowFlag: number = 1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'run')) {
-    fn['run'] = lib.func('AU3_Run', 'int', ['string16', 'string16', 'int']);
+    fn.run = lib.func('AU3_Run', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['run'].async(szProgram, szDir, nShowFlag, (err: Error, res: any) => {
+    fn.run.async(szProgram, szDir, nShowFlag, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1284,11 +1284,11 @@ export const runWait = (
   nShowFlag: number = 1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'runWait')) {
-    fn['runWait'] = lib.func('AU3_RunWait', 'int', ['string16', 'string16', 'int']);
+    fn.runWait = lib.func('AU3_RunWait', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['runWait'].async(szProgram, szDir, nShowFlag, (err: Error, res: any) => {
+    fn.runWait.async(szProgram, szDir, nShowFlag, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1305,7 +1305,7 @@ export const runAs = (
   nShowFlag: number = 1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'runAs')) {
-    fn['runAs'] = lib.func('AU3_RunAs', 'int', [
+    fn.runAs = lib.func('AU3_RunAs', 'int', [
       'string16',
       'string16',
       'string16',
@@ -1317,7 +1317,7 @@ export const runAs = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['runAs'].async(
+    fn.runAs.async(
       szUser,
       szDomain,
       szPassword,
@@ -1343,7 +1343,7 @@ export const runAsWait = (
   nShowFlag: number = 1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'runAsWait')) {
-    fn['runAsWait'] = lib.func('AU3_RunAsWait', 'int', [
+    fn.runAsWait = lib.func('AU3_RunAsWait', 'int', [
       'string16',
       'string16',
       'string16',
@@ -1355,7 +1355,7 @@ export const runAsWait = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['runAsWait'].async(
+    fn.runAsWait.async(
       szUser,
       szDomain,
       szPassword,
@@ -1373,11 +1373,11 @@ export const runAsWait = (
 
 export const send = (szSendText: string, nMode: number = 0): Promise<void> => {
   if (!Object.hasOwn(fn, 'send')) {
-    fn['send'] = lib.func('AU3_Send', 'void', ['string16', 'int']);
+    fn.send = lib.func('AU3_Send', 'void', ['string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['send'].async(szSendText, nMode, (err: Error, res: any) => {
+    fn.send.async(szSendText, nMode, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1386,11 +1386,11 @@ export const send = (szSendText: string, nMode: number = 0): Promise<void> => {
 
 export const shutdown = (nFlags: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'shutdown')) {
-    fn['shutdown'] = lib.func('AU3_Shutdown', 'int', ['int']);
+    fn.shutdown = lib.func('AU3_Shutdown', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['shutdown'].async(nFlags, (err: Error, res: any) => {
+    fn.shutdown.async(nFlags, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1399,11 +1399,11 @@ export const shutdown = (nFlags: number): Promise<number> => {
 
 export const sleep = (nMilliseconds: number): Promise<void> => {
   if (!Object.hasOwn(fn, 'sleep')) {
-    fn['sleep'] = lib.func('AU3_Sleep', 'void', ['int']);
+    fn.sleep = lib.func('AU3_Sleep', 'void', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['sleep'].async(nMilliseconds, (err: Error, res: any) => {
+    fn.sleep.async(nMilliseconds, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1417,7 +1417,7 @@ export const statusbarGetText = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'statusbarGetText')) {
-    fn['statusbarGetText'] = lib.func('AU3_StatusbarGetText', 'int', [
+    fn.statusbarGetText = lib.func('AU3_StatusbarGetText', 'int', [
       'string16',
       'string16',
       'int',
@@ -1428,7 +1428,7 @@ export const statusbarGetText = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['statusbarGetText'].async(szTitle, szText, nPart, result, nBufSize, (err: Error, _: any) => {
+    fn.statusbarGetText.async(szTitle, szText, nPart, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1441,7 +1441,7 @@ export const statusbarGetTextByHandle = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'statusbarGetTextByHandle')) {
-    fn['statusbarGetTextByHandle'] = lib.func('AU3_StatusbarGetTextByHandle', 'int', [
+    fn.statusbarGetTextByHandle = lib.func('AU3_StatusbarGetTextByHandle', 'int', [
       'int',
       'int',
       'LPWSTR',
@@ -1451,7 +1451,7 @@ export const statusbarGetTextByHandle = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['statusbarGetTextByHandle'].async(hWnd, nPart, result, nBufSize, (err: Error, _: any) => {
+    fn.statusbarGetTextByHandle.async(hWnd, nPart, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1464,11 +1464,11 @@ export const toolTip = (
   nY: number = -2147483647,
 ): Promise<void> => {
   if (!Object.hasOwn(fn, 'toolTip')) {
-    fn['toolTip'] = lib.func('AU3_ToolTip', 'void', ['string16', 'int', 'int']);
+    fn.toolTip = lib.func('AU3_ToolTip', 'void', ['string16', 'int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['toolTip'].async(szTip, nX, nY, (err: Error, res: any) => {
+    fn.toolTip.async(szTip, nX, nY, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1477,11 +1477,11 @@ export const toolTip = (
 
 export const winActivate = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winActivate')) {
-    fn['winActivate'] = lib.func('AU3_WinActivate', 'int', ['string16', 'string16']);
+    fn.winActivate = lib.func('AU3_WinActivate', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winActivate'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winActivate.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1490,11 +1490,11 @@ export const winActivate = (szTitle: string, szText: string = ''): Promise<numbe
 
 export const winActivateByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winActivateByHandle')) {
-    fn['winActivateByHandle'] = lib.func('AU3_WinActivateByHandle', 'int', ['int']);
+    fn.winActivateByHandle = lib.func('AU3_WinActivateByHandle', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winActivateByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winActivateByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1503,11 +1503,11 @@ export const winActivateByHandle = (hWnd: number): Promise<number> => {
 
 export const winActive = (szTitle: string, szText: string): Promise<number> => {
   if (!Object.hasOwn(fn, 'winActive')) {
-    fn['winActive'] = lib.func('AU3_WinActive', 'int', ['string16', 'string16']);
+    fn.winActive = lib.func('AU3_WinActive', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winActive'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winActive.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1516,11 +1516,11 @@ export const winActive = (szTitle: string, szText: string): Promise<number> => {
 
 export const winActiveByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winActiveByHandle')) {
-    fn['winActiveByHandle'] = lib.func('AU3_WinActiveByHandle', 'int', ['int']);
+    fn.winActiveByHandle = lib.func('AU3_WinActiveByHandle', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winActiveByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winActiveByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1529,11 +1529,11 @@ export const winActiveByHandle = (hWnd: number): Promise<number> => {
 
 export const winClose = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winClose')) {
-    fn['winClose'] = lib.func('AU3_WinClose', 'int', ['string16', 'string16']);
+    fn.winClose = lib.func('AU3_WinClose', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winClose'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winClose.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1542,11 +1542,11 @@ export const winClose = (szTitle: string, szText: string = ''): Promise<number> 
 
 export const winCloseByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winCloseByHandle')) {
-    fn['winCloseByHandle'] = lib.func('AU3_WinCloseByHandle', 'int', ['int']);
+    fn.winCloseByHandle = lib.func('AU3_WinCloseByHandle', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winCloseByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winCloseByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1555,11 +1555,11 @@ export const winCloseByHandle = (hWnd: number): Promise<number> => {
 
 export const winExists = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winExists')) {
-    fn['winExists'] = lib.func('AU3_WinExists', 'int', ['string16', 'string16']);
+    fn.winExists = lib.func('AU3_WinExists', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winExists'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winExists.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1568,11 +1568,11 @@ export const winExists = (szTitle: string, szText: string = ''): Promise<number>
 
 export const winExistsByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winExistsByHandle')) {
-    fn['winExistsByHandle'] = lib.func('AU3_WinExistsByHandle', 'int', ['int']);
+    fn.winExistsByHandle = lib.func('AU3_WinExistsByHandle', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winExistsByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winExistsByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1581,12 +1581,12 @@ export const winExistsByHandle = (hWnd: number): Promise<number> => {
 
 export const winGetCaretPos = (): Promise<Point> => {
   if (!Object.hasOwn(fn, 'winGetCaretPos')) {
-    fn['winGetCaretPos'] = lib.func('AU3_WinGetCaretPos', 'int', ['_Out_ LPPOINT*']);
+    fn.winGetCaretPos = lib.func('AU3_WinGetCaretPos', 'int', ['_Out_ LPPOINT*']);
   }
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['winGetCaretPos'].async(result, (err: Error, _: any) => {
+    fn.winGetCaretPos.async(result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1599,7 +1599,7 @@ export const winGetClassList = (
   nBufSize: number = 512,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetClassList')) {
-    fn['winGetClassList'] = lib.func('AU3_WinGetClassList', 'void', [
+    fn.winGetClassList = lib.func('AU3_WinGetClassList', 'void', [
       'string16',
       'string16',
       'LPWSTR',
@@ -1609,7 +1609,7 @@ export const winGetClassList = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetClassList'].async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetClassList.async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1618,7 +1618,7 @@ export const winGetClassList = (
 
 export const winGetClassListByHandle = (hWnd: number, nBufSize: number = 512): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetClassListByHandle')) {
-    fn['winGetClassListByHandle'] = lib.func('AU3_WinGetClassListByHandle', 'void', [
+    fn.winGetClassListByHandle = lib.func('AU3_WinGetClassListByHandle', 'void', [
       'int',
       'LPWSTR',
       'int',
@@ -1627,7 +1627,7 @@ export const winGetClassListByHandle = (hWnd: number, nBufSize: number = 512): P
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetClassListByHandle'].async(hWnd, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetClassListByHandle.async(hWnd, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1636,7 +1636,7 @@ export const winGetClassListByHandle = (hWnd: number, nBufSize: number = 512): P
 
 export const winGetClientSize = (szTitle: string, szText: string = ''): Promise<Rect> => {
   if (!Object.hasOwn(fn, 'winGetClientSize')) {
-    fn['winGetClientSize'] = lib.func('AU3_WinGetClientSize', 'int', [
+    fn.winGetClientSize = lib.func('AU3_WinGetClientSize', 'int', [
       'string16',
       'string16',
       '_Out_ LPRECT*',
@@ -1645,7 +1645,7 @@ export const winGetClientSize = (szTitle: string, szText: string = ''): Promise<
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['winGetClientSize'].async(szTitle, szText, result, (err: Error, _: any) => {
+    fn.winGetClientSize.async(szTitle, szText, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1654,7 +1654,7 @@ export const winGetClientSize = (szTitle: string, szText: string = ''): Promise<
 
 export const winGetClientSizeByHandle = (hWnd: number): Promise<Rect> => {
   if (!Object.hasOwn(fn, 'winGetClientSizeByHandle')) {
-    fn['winGetClientSizeByHandle'] = lib.func('AU3_WinGetClientSizeByHandle', 'int', [
+    fn.winGetClientSizeByHandle = lib.func('AU3_WinGetClientSizeByHandle', 'int', [
       'int',
       '_Out_ LPRECT*',
     ]);
@@ -1662,7 +1662,7 @@ export const winGetClientSizeByHandle = (hWnd: number): Promise<Rect> => {
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['winGetClientSizeByHandle'].async(hWnd, result, (err: Error, _: any) => {
+    fn.winGetClientSizeByHandle.async(hWnd, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1671,11 +1671,11 @@ export const winGetClientSizeByHandle = (hWnd: number): Promise<Rect> => {
 
 export const winGetHandle = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winGetHandle')) {
-    fn['winGetHandle'] = lib.func('AU3_WinGetHandle', 'int', ['string16', 'string16']);
+    fn.winGetHandle = lib.func('AU3_WinGetHandle', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winGetHandle'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winGetHandle.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1688,7 +1688,7 @@ export const winGetHandleAsText = (
   nBufSize: number = 256,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetHandleAsText')) {
-    fn['winGetHandleAsText'] = lib.func('AU3_WinGetHandleAsText', 'void', [
+    fn.winGetHandleAsText = lib.func('AU3_WinGetHandleAsText', 'void', [
       'string16',
       'string16',
       'LPWSTR',
@@ -1698,7 +1698,7 @@ export const winGetHandleAsText = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetHandleAsText'].async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetHandleAsText.async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1707,12 +1707,12 @@ export const winGetHandleAsText = (
 
 export const winGetPos = (szTitle: string, szText: string = ''): Promise<Rect> => {
   if (!Object.hasOwn(fn, 'winGetPos')) {
-    fn['winGetPos'] = lib.func('AU3_WinGetPos', 'int', ['string16', 'string16', '_Out_ LPRECT*']);
+    fn.winGetPos = lib.func('AU3_WinGetPos', 'int', ['string16', 'string16', '_Out_ LPRECT*']);
   }
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['winGetPos'].async(szTitle, szText, result, (err: Error, _: any) => {
+    fn.winGetPos.async(szTitle, szText, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1721,12 +1721,12 @@ export const winGetPos = (szTitle: string, szText: string = ''): Promise<Rect> =
 
 export const winGetPosByHandle = (hWnd: number): Promise<Rect> => {
   if (!Object.hasOwn(fn, 'winGetPosByHandle')) {
-    fn['winGetPosByHandle'] = lib.func('AU3_WinGetPosByHandle', 'int', ['int', '_Out_ LPRECT*']);
+    fn.winGetPosByHandle = lib.func('AU3_WinGetPosByHandle', 'int', ['int', '_Out_ LPRECT*']);
   }
   const result: any = {};
 
   return new Promise((resolve, reject) => {
-    fn['winGetPosByHandle'].async(hWnd, result, (err: Error, _: any) => {
+    fn.winGetPosByHandle.async(hWnd, result, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -1735,11 +1735,11 @@ export const winGetPosByHandle = (hWnd: number): Promise<Rect> => {
 
 export const winGetProcess = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winGetProcess')) {
-    fn['winGetProcess'] = lib.func('AU3_WinGetProcess', 'uint32', ['string16', 'string16']);
+    fn.winGetProcess = lib.func('AU3_WinGetProcess', 'uint32', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winGetProcess'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winGetProcess.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1748,11 +1748,11 @@ export const winGetProcess = (szTitle: string, szText: string = ''): Promise<num
 
 export const winGetProcessByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winGetProcessByHandle')) {
-    fn['winGetProcessByHandle'] = lib.func('AU3_WinGetProcessByHandle', 'uint32', ['int']);
+    fn.winGetProcessByHandle = lib.func('AU3_WinGetProcessByHandle', 'uint32', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winGetProcessByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winGetProcessByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1761,11 +1761,11 @@ export const winGetProcessByHandle = (hWnd: number): Promise<number> => {
 
 export const winGetState = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winGetState')) {
-    fn['winGetState'] = lib.func('AU3_WinGetState', 'int', ['string16', 'string16']);
+    fn.winGetState = lib.func('AU3_WinGetState', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winGetState'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winGetState.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1774,11 +1774,11 @@ export const winGetState = (szTitle: string, szText: string = ''): Promise<numbe
 
 export const winGetStateByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winGetStateByHandle')) {
-    fn['winGetStateByHandle'] = lib.func('AU3_WinGetStateByHandle', 'int', ['int']);
+    fn.winGetStateByHandle = lib.func('AU3_WinGetStateByHandle', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winGetStateByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winGetStateByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1791,7 +1791,7 @@ export const winGetText = (
   nBufSize: number = 512,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetText')) {
-    fn['winGetText'] = lib.func('AU3_WinGetText', 'void', [
+    fn.winGetText = lib.func('AU3_WinGetText', 'void', [
       'string16',
       'string16',
       'LPWSTR',
@@ -1801,7 +1801,7 @@ export const winGetText = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetText'].async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetText.async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1810,12 +1810,12 @@ export const winGetText = (
 
 export const winGetTextByHandle = (hWnd: number, nBufSize: number = 512): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetTextByHandle')) {
-    fn['winGetTextByHandle'] = lib.func('AU3_WinGetTextByHandle', 'void', ['int', 'LPWSTR', 'int']);
+    fn.winGetTextByHandle = lib.func('AU3_WinGetTextByHandle', 'void', ['int', 'LPWSTR', 'int']);
   }
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetTextByHandle'].async(hWnd, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetTextByHandle.async(hWnd, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1828,7 +1828,7 @@ export const winGetTitle = (
   nBufSize: number = 512,
 ): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetTitle')) {
-    fn['winGetTitle'] = lib.func('AU3_WinGetTitle', 'void', [
+    fn.winGetTitle = lib.func('AU3_WinGetTitle', 'void', [
       'string16',
       'string16',
       'LPWSTR',
@@ -1838,7 +1838,7 @@ export const winGetTitle = (
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetTitle'].async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetTitle.async(szTitle, szText, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1847,7 +1847,7 @@ export const winGetTitle = (
 
 export const winGetTitleByHandle = (hWnd: number, nBufSize: number = 512): Promise<string> => {
   if (!Object.hasOwn(fn, 'winGetTitleByHandle')) {
-    fn['winGetTitleByHandle'] = lib.func('AU3_WinGetTitleByHandle', 'void', [
+    fn.winGetTitleByHandle = lib.func('AU3_WinGetTitleByHandle', 'void', [
       'int',
       'LPWSTR',
       'int',
@@ -1856,7 +1856,7 @@ export const winGetTitleByHandle = (hWnd: number, nBufSize: number = 512): Promi
   const result = Buffer.alloc(nBufSize * wchar.size);
 
   return new Promise((resolve, reject) => {
-    fn['winGetTitleByHandle'].async(hWnd, result, nBufSize, (err: Error, _: any) => {
+    fn.winGetTitleByHandle.async(hWnd, result, nBufSize, (err: Error, _: any) => {
       if (err) reject(err);
       else resolve(getWString(result));
     });
@@ -1865,11 +1865,11 @@ export const winGetTitleByHandle = (hWnd: number, nBufSize: number = 512): Promi
 
 export const winKill = (szTitle: string, szText: string = ''): Promise<number> => {
   if (!Object.hasOwn(fn, 'winKill')) {
-    fn['winKill'] = lib.func('AU3_WinKill', 'int', ['string16', 'string16']);
+    fn.winKill = lib.func('AU3_WinKill', 'int', ['string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winKill'].async(szTitle, szText, (err: Error, res: any) => {
+    fn.winKill.async(szTitle, szText, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1878,11 +1878,11 @@ export const winKill = (szTitle: string, szText: string = ''): Promise<number> =
 
 export const winKillByHandle = (hWnd: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winKillByHandle')) {
-    fn['winKillByHandle'] = lib.func('AU3_WinKillByHandle', 'int', ['int']);
+    fn.winKillByHandle = lib.func('AU3_WinKillByHandle', 'int', ['int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winKillByHandle'].async(hWnd, (err: Error, res: any) => {
+    fn.winKillByHandle.async(hWnd, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1902,7 +1902,7 @@ export const winMenuSelectItem = (
   szItem8: string = '',
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winMenuSelectItem')) {
-    fn['winMenuSelectItem'] = lib.func('AU3_WinMenuSelectItem', 'int', [
+    fn.winMenuSelectItem = lib.func('AU3_WinMenuSelectItem', 'int', [
       'string16',
       'string16',
       'string16',
@@ -1917,7 +1917,7 @@ export const winMenuSelectItem = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['winMenuSelectItem'].async(
+    fn.winMenuSelectItem.async(
       szTitle,
       szText,
       szItem1,
@@ -1948,7 +1948,7 @@ export const winMenuSelectItemByHandle = (
   szItem8: string = '',
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winMenuSelectItemByHandle')) {
-    fn['winMenuSelectItemByHandle'] = lib.func('AU3_WinMenuSelectItemByHandle', 'int', [
+    fn.winMenuSelectItemByHandle = lib.func('AU3_WinMenuSelectItemByHandle', 'int', [
       'int',
       'string16',
       'string16',
@@ -1962,7 +1962,7 @@ export const winMenuSelectItemByHandle = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['winMenuSelectItemByHandle'].async(
+    fn.winMenuSelectItemByHandle.async(
       hWnd,
       szItem1,
       szItem2,
@@ -1982,11 +1982,11 @@ export const winMenuSelectItemByHandle = (
 
 export const winMinimizeAll = (): Promise<void> => {
   if (!Object.hasOwn(fn, 'winMinimizeAll')) {
-    fn['winMinimizeAll'] = lib.func('AU3_WinMinimizeAll', 'void', []);
+    fn.winMinimizeAll = lib.func('AU3_WinMinimizeAll', 'void', []);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winMinimizeAll'].async((err: Error, res: any) => {
+    fn.winMinimizeAll.async((err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -1995,11 +1995,11 @@ export const winMinimizeAll = (): Promise<void> => {
 
 export const winMinimizeAllUndo = (): Promise<void> => {
   if (!Object.hasOwn(fn, 'winMinimizeAllUndo')) {
-    fn['winMinimizeAllUndo'] = lib.func('AU3_WinMinimizeAllUndo', 'void', []);
+    fn.winMinimizeAllUndo = lib.func('AU3_WinMinimizeAllUndo', 'void', []);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winMinimizeAllUndo'].async((err: Error, res: any) => {
+    fn.winMinimizeAllUndo.async((err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2015,7 +2015,7 @@ export const winMove = (
   nHeight: number = -1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winMove')) {
-    fn['winMove'] = lib.func('AU3_WinMove', 'int', [
+    fn.winMove = lib.func('AU3_WinMove', 'int', [
       'string16',
       'string16',
       'int',
@@ -2026,7 +2026,7 @@ export const winMove = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['winMove'].async(szTitle, szText, nX, nY, nWidth, nHeight, (err: Error, res: any) => {
+    fn.winMove.async(szTitle, szText, nX, nY, nWidth, nHeight, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2041,7 +2041,7 @@ export const winMoveByHandle = (
   nHeight: number = -1,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winMoveByHandle')) {
-    fn['winMoveByHandle'] = lib.func('AU3_WinMoveByHandle', 'int', [
+    fn.winMoveByHandle = lib.func('AU3_WinMoveByHandle', 'int', [
       'int',
       'int',
       'int',
@@ -2051,7 +2051,7 @@ export const winMoveByHandle = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['winMoveByHandle'].async(hWnd, nX, nY, nWidth, nHeight, (err: Error, res: any) => {
+    fn.winMoveByHandle.async(hWnd, nX, nY, nWidth, nHeight, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2064,11 +2064,11 @@ export const winSetOnTop = (
   nFlag: number,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetOnTop')) {
-    fn['winSetOnTop'] = lib.func('AU3_WinSetOnTop', 'int', ['string16', 'string16', 'int']);
+    fn.winSetOnTop = lib.func('AU3_WinSetOnTop', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetOnTop'].async(szTitle, szText, nFlag, (err: Error, res: any) => {
+    fn.winSetOnTop.async(szTitle, szText, nFlag, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2077,11 +2077,11 @@ export const winSetOnTop = (
 
 export const winSetOnTopByHandle = (hWnd: number, nFlag: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetOnTopByHandle')) {
-    fn['winSetOnTopByHandle'] = lib.func('AU3_WinSetOnTopByHandle', 'int', ['int', 'int']);
+    fn.winSetOnTopByHandle = lib.func('AU3_WinSetOnTopByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetOnTopByHandle'].async(hWnd, nFlag, (err: Error, res: any) => {
+    fn.winSetOnTopByHandle.async(hWnd, nFlag, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2094,11 +2094,11 @@ export const winSetState = (
   nFlags: number,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetState')) {
-    fn['winSetState'] = lib.func('AU3_WinSetState', 'int', ['string16', 'string16', 'int']);
+    fn.winSetState = lib.func('AU3_WinSetState', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetState'].async(szTitle, szText, nFlags, (err: Error, res: any) => {
+    fn.winSetState.async(szTitle, szText, nFlags, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2107,11 +2107,11 @@ export const winSetState = (
 
 export const winSetStateByHandle = (hWnd: number, nFlags: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetStateByHandle')) {
-    fn['winSetStateByHandle'] = lib.func('AU3_WinSetStateByHandle', 'int', ['int', 'int']);
+    fn.winSetStateByHandle = lib.func('AU3_WinSetStateByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetStateByHandle'].async(hWnd, nFlags, (err: Error, res: any) => {
+    fn.winSetStateByHandle.async(hWnd, nFlags, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2124,11 +2124,11 @@ export const winSetTitle = (
   szNewTitle: string,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetTitle')) {
-    fn['winSetTitle'] = lib.func('AU3_WinSetTitle', 'int', ['string16', 'string16', 'string16']);
+    fn.winSetTitle = lib.func('AU3_WinSetTitle', 'int', ['string16', 'string16', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetTitle'].async(szTitle, szText, szNewTitle, (err: Error, res: any) => {
+    fn.winSetTitle.async(szTitle, szText, szNewTitle, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2137,11 +2137,11 @@ export const winSetTitle = (
 
 export const winSetTitleByHandle = (hWnd: number, szNewTitle: string): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetTitleByHandle')) {
-    fn['winSetTitleByHandle'] = lib.func('AU3_WinSetTitleByHandle', 'int', ['int', 'string16']);
+    fn.winSetTitleByHandle = lib.func('AU3_WinSetTitleByHandle', 'int', ['int', 'string16']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetTitleByHandle'].async(hWnd, szNewTitle, (err: Error, res: any) => {
+    fn.winSetTitleByHandle.async(hWnd, szNewTitle, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2154,11 +2154,11 @@ export const winSetTrans = (
   nTrans: number,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetTrans')) {
-    fn['winSetTrans'] = lib.func('AU3_WinSetTrans', 'int', ['string16', 'string16', 'int']);
+    fn.winSetTrans = lib.func('AU3_WinSetTrans', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetTrans'].async(szTitle, szText, nTrans, (err: Error, res: any) => {
+    fn.winSetTrans.async(szTitle, szText, nTrans, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2167,11 +2167,11 @@ export const winSetTrans = (
 
 export const winSetTransByHandle = (hWnd: number, nTrans: number): Promise<number> => {
   if (!Object.hasOwn(fn, 'winSetTransByHandle')) {
-    fn['winSetTransByHandle'] = lib.func('AU3_WinSetTransByHandle', 'int', ['int', 'int']);
+    fn.winSetTransByHandle = lib.func('AU3_WinSetTransByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winSetTransByHandle'].async(hWnd, nTrans, (err: Error, res: any) => {
+    fn.winSetTransByHandle.async(hWnd, nTrans, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2184,11 +2184,11 @@ export const winWait = (
   nTimeout: number = 0,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWait')) {
-    fn['winWait'] = lib.func('AU3_WinWait', 'int', ['string16', 'string16', 'int']);
+    fn.winWait = lib.func('AU3_WinWait', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWait'].async(szTitle, szText, nTimeout, (err: Error, res: any) => {
+    fn.winWait.async(szTitle, szText, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2197,11 +2197,11 @@ export const winWait = (
 
 export const winWaitByHandle = (hWnd: number, nTimeout: number = 0): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitByHandle')) {
-    fn['winWaitByHandle'] = lib.func('AU3_WinWaitByHandle', 'int', ['int', 'int']);
+    fn.winWaitByHandle = lib.func('AU3_WinWaitByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitByHandle'].async(hWnd, nTimeout, (err: Error, res: any) => {
+    fn.winWaitByHandle.async(hWnd, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2214,11 +2214,11 @@ export const winWaitActive = (
   nTimeout: number = 0,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitActive')) {
-    fn['winWaitActive'] = lib.func('AU3_WinWaitActive', 'int', ['string16', 'string16', 'int']);
+    fn.winWaitActive = lib.func('AU3_WinWaitActive', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitActive'].async(szTitle, szText, nTimeout, (err: Error, res: any) => {
+    fn.winWaitActive.async(szTitle, szText, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2227,11 +2227,11 @@ export const winWaitActive = (
 
 export const winWaitActiveByHandle = (hWnd: number, nTimeout: number = 0): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitActiveByHandle')) {
-    fn['winWaitActiveByHandle'] = lib.func('AU3_WinWaitActiveByHandle', 'int', ['int', 'int']);
+    fn.winWaitActiveByHandle = lib.func('AU3_WinWaitActiveByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitActiveByHandle'].async(hWnd, nTimeout, (err: Error, res: any) => {
+    fn.winWaitActiveByHandle.async(hWnd, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2244,11 +2244,11 @@ export const winWaitClose = (
   nTimeout: number = 0,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitClose')) {
-    fn['winWaitClose'] = lib.func('AU3_WinWaitClose', 'int', ['string16', 'string16', 'int']);
+    fn.winWaitClose = lib.func('AU3_WinWaitClose', 'int', ['string16', 'string16', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitClose'].async(szTitle, szText, nTimeout, (err: Error, res: any) => {
+    fn.winWaitClose.async(szTitle, szText, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2257,11 +2257,11 @@ export const winWaitClose = (
 
 export const winWaitCloseByHandle = (hWnd: number, nTimeout: number = 0): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitCloseByHandle')) {
-    fn['winWaitCloseByHandle'] = lib.func('AU3_WinWaitCloseByHandle', 'int', ['int', 'int']);
+    fn.winWaitCloseByHandle = lib.func('AU3_WinWaitCloseByHandle', 'int', ['int', 'int']);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitCloseByHandle'].async(hWnd, nTimeout, (err: Error, res: any) => {
+    fn.winWaitCloseByHandle.async(hWnd, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2274,7 +2274,7 @@ export const winWaitNotActive = (
   nTimeout: number = 0,
 ): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitNotActive')) {
-    fn['winWaitNotActive'] = lib.func('AU3_WinWaitNotActive', 'int', [
+    fn.winWaitNotActive = lib.func('AU3_WinWaitNotActive', 'int', [
       'string16',
       'string16',
       'int',
@@ -2282,7 +2282,7 @@ export const winWaitNotActive = (
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitNotActive'].async(szTitle, szText, nTimeout, (err: Error, res: any) => {
+    fn.winWaitNotActive.async(szTitle, szText, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });
@@ -2291,14 +2291,14 @@ export const winWaitNotActive = (
 
 export const winWaitNotActiveByHandle = (hWnd: number, nTimeout: number = 0): Promise<number> => {
   if (!Object.hasOwn(fn, 'winWaitNotActiveByHandle')) {
-    fn['winWaitNotActiveByHandle'] = lib.func('AU3_WinWaitNotActiveByHandle', 'int', [
+    fn.winWaitNotActiveByHandle = lib.func('AU3_WinWaitNotActiveByHandle', 'int', [
       'int',
       'int',
     ]);
   }
 
   return new Promise((resolve, reject) => {
-    fn['winWaitNotActiveByHandle'].async(hWnd, nTimeout, (err: Error, res: any) => {
+    fn.winWaitNotActiveByHandle.async(hWnd, nTimeout, (err: Error, res: any) => {
       if (err) reject(err);
       else resolve(res);
     });

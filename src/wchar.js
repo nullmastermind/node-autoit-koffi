@@ -29,13 +29,13 @@ var iconv = require('iconv-lite');
  */
 
 var size;
-if ('win32' == process.platform) {
+if ('win32' === process.platform) {
   size = 2;
 } else {
   size = 4;
 }
 
-var wchar_encoding = ('utf-' + 8 * size + ref.endianness).toLowerCase();
+var wchar_encoding = (`utf-${8 * size}${ref.endianness}`).toLowerCase();
 //var getter = new Iconv('UTF-' + (8 * size) + ref.endianness, 'UTF-8');
 //var setter = new Iconv('UTF-8', 'UTF-' + (8 * size) + ref.endianness);
 
@@ -43,18 +43,18 @@ var wchar_encoding = ('utf-' + 8 * size + ref.endianness).toLowerCase();
  * The `wchar_t` type.
  */
 
-exports = module.exports = Object.create(ref.types['int' + 8 * size]);
-exports.name = 'wchar_t';
-exports.size = size;
-exports.indirection = 1;
-exports.get = function get(buf, offset) {
-  if (offset > 0 || buf.length !== exports.size) {
+module.exports = Object.create(ref.types[`int${8 * size}`]);
+module.exports.name = 'wchar_t';
+module.exports.size = size;
+module.exports.indirection = 1;
+module.exports.get = function get(buf, offset) {
+  if (offset > 0 || buf.length !== module.exports.size) {
     offset = offset | 0;
     buf = buf.slice(offset, offset + size);
   }
-  return exports.toString(buf);
+  return module.exports.toString(buf);
 };
-exports.set = function set(buf, offset, val) {
+module.exports.set = function set(buf, offset, val) {
   var _buf = val; // assume val is a Buffer by default
   if (typeof val === 'string') {
     //_buf = setter.convert(val[0]);
@@ -75,21 +75,21 @@ exports.set = function set(buf, offset, val) {
  * actually want. We just have to define custom "get" and "set" functions.
  */
 
-exports.string = Object.create(ref.types.CString);
-exports.string.name = 'WCString';
-exports.string.get = function get(buf, offset) {
+module.exports.string = Object.create(ref.types.CString);
+module.exports.string.name = 'WCString';
+module.exports.string.get = function get(buf, offset) {
   var _buf = buf.readPointer(offset);
   if (_buf.isNull()) {
     return null;
   }
-  var stringBuf = _buf.reinterpretUntilZeros(exports.size);
-  return exports.toString(stringBuf);
+  var stringBuf = _buf.reinterpretUntilZeros(module.exports.size);
+  return module.exports.toString(stringBuf);
 };
-exports.string.set = function set(buf, offset, val) {
+module.exports.string.set = function set(buf, offset, val) {
   var _buf = val; // val is a Buffer? it better be \0 terminated...
-  if ('string' == typeof val) {
+  if ('string' === typeof val) {
     //_buf = setter.convert(val + '\0');
-    _buf = iconv.encode(val + '\0', wchar_encoding);
+    _buf = iconv.encode(`${val}\0`, wchar_encoding);
   }
   return buf.writePointer(_buf, offset);
 };
@@ -101,7 +101,7 @@ exports.string.set = function set(buf, offset, val) {
  * @public
  */
 
-exports.toString = function toString(buffer) {
+module.exports.toString = function bufferToString(buffer) {
   //return getter.convert(buffer).toString('utf8');
   return iconv.decode(buffer, wchar_encoding);
 };
